@@ -70,6 +70,50 @@
                         transportation="HLAreliable"
                         order="TimeStamp"
                         semantics="NA" />
+                <attribute
+                        name="priorytet"
+                        dataType="HLAinteger32BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="obslugiwany"
+                        dataType="HLAboolean"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="obsluzony"
+                        dataType="HLAboolean"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="idKolejki"
+                        dataType="HLAinteger32BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
             </objectClass>
         </objectClass>
     </objects>

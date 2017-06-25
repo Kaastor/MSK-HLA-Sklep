@@ -34,6 +34,14 @@ public class KlientFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle generujKlientaHandle;
 
+    //udostepniane z fom
+    protected ObjectClassHandle KlientHandle;
+    protected AttributeHandle idHandle;
+    protected AttributeHandle priorytetHandle;
+    protected AttributeHandle obslugiwanyHandle;
+    protected AttributeHandle obsluzonyHandle;
+    protected AttributeHandle idKolejkiHandle;
+
     LinkedList<Klient> listaKlientow = new LinkedList<>();
 
     private void log( String message )
@@ -113,7 +121,7 @@ public class KlientFederate {
 
         for( timer = 0; timer < ITERATIONS; timer++ )
         {
-            klientObsluga(timer);
+            klientUtylizacja(timer);
             log( "Advancing..." );
             advanceTime( 1.0 );
             log( "Time Advanced to " + fedamb.federateTime );
@@ -140,11 +148,39 @@ public class KlientFederate {
             }
         }
 
-        private void publishAndSubscribe() throws RTIexception
-        {
-            generujKlientaHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.generujKlienta" );
+        private void publishAndSubscribe() throws RTIexception {
+            this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
+            this.idHandle = rtiamb.getAttributeHandle(this.KlientHandle, "id");
+            this.priorytetHandle = rtiamb.getAttributeHandle(this.KlientHandle, "priorytet");
+            this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
+            this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
+            this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+            AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
+            attributes.add(this.idHandle);
+            attributes.add(this.priorytetHandle);
+            attributes.add(this.obslugiwanyHandle);
+            attributes.add(this.obsluzonyHandle);
+            attributes.add(this.idKolejkiHandle);
+            rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
+
+            this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
+            this.idHandle = rtiamb.getAttributeHandle(this.KlientHandle, "id");
+            this.priorytetHandle = rtiamb.getAttributeHandle(this.KlientHandle, "priorytet");
+            this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
+            this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
+            this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+            AttributeHandleSet attributes2 = rtiamb.getAttributeHandleSetFactory().create();
+            attributes2.add(this.idHandle);
+            attributes2.add(this.priorytetHandle);
+            attributes2.add(this.obslugiwanyHandle);
+            attributes2.add(this.obsluzonyHandle);
+            attributes2.add(this.idKolejkiHandle);
+            rtiamb.subscribeObjectClassAttributes(KlientHandle, attributes2);
+
+
+            generujKlientaHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.generujKlienta");
             rtiamb.subscribeInteractionClass(generujKlientaHandle);
-            koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
+            koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
             rtiamb.publishInteractionClass(koniecSymulacjiHandle);
         }
 
@@ -190,20 +226,29 @@ public class KlientFederate {
         }
 
 
-        public void klientObsluga(int czasSymulacji) throws RTIexception
+        public void klientUtylizacja(int czasSymulacji) throws RTIexception
         {
+            for(int i = 0 ; i < listaKlientow.size() ; i++){
+                if(listaKlientow.get(i).isObsluzony())
+                    listaKlientow.remove(i);
+            }
             log(listaKlientow.toString());
         }
 
-        public void rtiNowyKlient()
+        public void rtiNowyKlient() throws Exception
         {
             log("GenerujeKlienta" );
             Klient klient = new Klient();
             listaKlientow.add(klient);
             klient.setId(maxKlientId + 1);
             maxKlientId = maxKlientId + 1;
+            klient.setKlientHandle(registerObject());
         }
 
+    private ObjectInstanceHandle registerObject() throws RTIexception
+    {
+        return rtiamb.registerObjectInstance( KlientHandle );
+    }
 
         public static void main( String[] args )
         {
