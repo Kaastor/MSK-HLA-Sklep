@@ -28,6 +28,7 @@ public class KlientFederate {
     public static int timer;
     public static int maxKlientId = 0;
 
+    private int simTime;
     private RTIambassador rtiamb;
     private KlientFederateAmbassador fedamb;
     private HLAfloat64TimeFactory timeFactory;
@@ -190,8 +191,8 @@ public class KlientFederate {
         HLAinteger16BE obslugiwanyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObslugiwany()));
         attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
-        System.out.println(klient.getKlientHandle() + " " + attributes + " " + generateTag() + " " + time);
         rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
+        log("KlientId: " + klient.getId() + " updated");
     }
 
     private void enableTimePolicy() throws Exception {
@@ -216,23 +217,27 @@ public class KlientFederate {
 
 
     public void klientUtylizacja(int czasSymulacji) throws RTIexception {
-//            for(int i = 0 ; i < listaKlientow.size() ; i++) {
-////                if (listaKlientow.get(i).isObsluzony()) {
-////                    listaKlientow.remove(i);
-////                    log(listaKlientow.get(i).getId() + " usuniety.");
-////                }
-////
-////                if(czasSymulacji == 50){
-////                    listaKlientow.get(i).setObsluzony(true);
-////                    updateAttributeValues(listaKlientow.get(i));
-////                }
-//            }
+        simTime= czasSymulacji;
+        Klient klient;
+            for(int i = 0 ; i < listaKlientow.size() ; i++) {
+                klient = listaKlientow.get(i);
+                if(klient.getCzasUtworzenia() >= czasSymulacji && klient.getKlientHandle() == null){
+                    klient.setKlientHandle(registerObject());
+                    updateAttributeValues(klient);
+                }
+
+                if (listaKlientow.get(i).getObsluzony() == 1) {
+                    listaKlientow.remove(i);
+                    log(listaKlientow.get(i).getId() + " usuniety.");
+                }
+
+            }
         log(listaKlientow.toString());
     }
 
     public void rtiNowyKlient() throws Exception {
         log("GenerujeKlienta");
-        Klient klient = new Klient();
+        Klient klient = new Klient(simTime+1);
         klient.setId(maxKlientId + 1);
         maxKlientId = maxKlientId + 1;
         listaKlientow.add(klient);

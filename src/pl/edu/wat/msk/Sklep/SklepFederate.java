@@ -26,7 +26,7 @@ public class SklepFederate {
 
     private int nastepnaGeneracja = 0;
     private int okresGeneracji = 10;
-    private int generowanaLiczbaKlientow = 5;
+    private int generowanaLiczbaKlientow = 1;
 
     private RTIambassador rtiamb;
     private SklepFederateAmbassador fedamb;
