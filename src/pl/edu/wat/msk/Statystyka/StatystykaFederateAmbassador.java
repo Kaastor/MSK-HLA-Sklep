@@ -49,6 +49,7 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
             return 0;
         }
     }
+    //dsadas
 
     @Override
     public void synchronizationPointRegistrationFailed( String label, SynchronizationPointFailureReason reason )
