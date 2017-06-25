@@ -143,6 +143,14 @@
                         order="TimeStamp"
                         semantics="NA" />
             </interactionClass>
+            <interactionClass name="daneSymulacji" sharing="PublishSubscribe"
+                              dimensions="NA" transportation="HLAreliable" order="Receive"
+                              semantics="NA">
+                <parameter name="czasObslugi" dataType="HLAfloat64BE" semantics="NA" />
+                <parameter name="liczbaNaplywajacychKlientow" dataType="HLAinteger32BE" semantics="NA" />
+                <parameter name="okresCzasuNaplywu" dataType="HLAfloat64BE" semantics="NA" />
+                <parameter name="liczbaOkienek" dataType="HLAinteger32BE" semantics="NA" />
+            </interactionClass>
             <interactionClass
                     name="koniecSymulacji"
                     sharing="PublishSubscribe"

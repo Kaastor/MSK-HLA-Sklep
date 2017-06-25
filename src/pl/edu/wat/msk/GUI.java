@@ -1,15 +1,21 @@
 package pl.edu.wat.msk;
 
 import hla.rti.RTIexception;
+import pl.edu.wat.msk.Gui.GuiFederate;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by Pawel on 2017-06-25.
  */
 public class GUI {
+
+        public static GuiFederate guiFederate;
 
         private JFrame frame;
 
@@ -33,11 +39,13 @@ public class GUI {
         private boolean koniecSymulacji;
 
 
-        public GUI (){
+        public GUI (GuiFederate federate){
+            this.guiFederate = federate;
             init();
         }
 
         private void init(){
+
             koniecSymulacji = false;
             frame = new JFrame();
             frame.setTitle("GUI");
@@ -99,16 +107,45 @@ public class GUI {
                     liczbaOkienek = Integer.valueOf(liczbaOkienekText.getText().toString());
                     //System.out.println(liczbaOkienek);
 
+                    try {
+                        guiFederate.sendStats(czasObslugi,liczbaNaplywajacychKlientow,okresCzasuNaplywu,liczbaOkienek);
+                    } catch (hla.rti1516e.exceptions.RTIexception rtIexception) {
+                        rtIexception.printStackTrace();
+                    }
+
                 }
             });
 
             stopSymulacjiButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    koniecSymulacji = true;
+                    try {
+                        guiFederate.sendInteraction("koniecSymulacji");
+                        koniecSymulacji = true;
+                        guiFederate.advanceTime(1.0);
+                        guiFederate.resign();
+
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                 }
             });
 
+
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    try {
+                        guiFederate.sendInteraction("koniecSymulacji");
+                        guiFederate.advanceTime(1.0);
+                        guiFederate.resign();
+                    } catch (Exception e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    frame.dispose();
+                }
+            });
 
             frame.add(czasObslugiLabel);
             frame.add(liczbaKlientowLabel);
@@ -129,8 +166,18 @@ public class GUI {
 
         }
 
-        public static void main(String args[]){
-            GUI gui = new GUI();
-        }
+    public static void run(GuiFederate federat) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    GUI gui = new GUI(federat);
+                    gui.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
 

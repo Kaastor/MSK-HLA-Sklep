@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Created by Pawel on 2017-06-25.
  */
-public class Statystyka {
+public class Stats {
 
     private JFrame frame;
 
@@ -17,7 +17,7 @@ public class Statystyka {
     private JLabel liczbaObsluzonychText;
     private JLabel przepustowoscText;
 
-    public Statystyka() {
+    public Stats() {
         init();
     }
 
@@ -32,7 +32,7 @@ public class Statystyka {
         frame.getContentPane().setLayout(null);
         frame.setResizable(false);
         frame.setSize(300, 300);
-        frame.setTitle("Statystyka");
+        frame.setTitle("Stats");
 
         liczbaKlientowLabel = new JLabel();
         liczbaKlientowLabel.setBounds(25,50,200,20);
@@ -68,7 +68,7 @@ public class Statystyka {
     }
 
     public static void main(String args[]) {
-        Statystyka stat = new Statystyka();
+        Stats stat = new Stats();
         stat.setStats(100,20);
     }
 }
