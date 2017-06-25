@@ -61,7 +61,7 @@
                     semantics="NA">
                 <attribute
                         name="id"
-                        dataType="HLAinteger32BE"
+                        dataType="HLAinteger16BE"
                         updateType="Conditional"
                         updateCondition="NA"
                         ownership="NoTransfer"
@@ -72,7 +72,7 @@
                         semantics="NA" />
                 <attribute
                         name="priorytet"
-                        dataType="HLAinteger32BE"
+                        dataType="HLAinteger16BE"
                         updateType="Conditional"
                         updateCondition="NA"
                         ownership="NoTransfer"
@@ -83,7 +83,7 @@
                         semantics="NA" />
                 <attribute
                         name="obslugiwany"
-                        dataType="HLAboolean"
+                        dataType="HLAinteger16BE"
                         updateType="Conditional"
                         updateCondition="NA"
                         ownership="NoTransfer"
@@ -94,7 +94,7 @@
                         semantics="NA" />
                 <attribute
                         name="obsluzony"
-                        dataType="HLAboolean"
+                        dataType="HLAinteger16BE"
                         updateType="Conditional"
                         updateCondition="NA"
                         ownership="NoTransfer"
@@ -105,7 +105,7 @@
                         semantics="NA" />
                 <attribute
                         name="idKolejki"
-                        dataType="HLAinteger32BE"
+                        dataType="HLAinteger16BE"
                         updateType="Conditional"
                         updateCondition="NA"
                         ownership="NoTransfer"

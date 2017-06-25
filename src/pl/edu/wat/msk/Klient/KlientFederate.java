@@ -28,6 +28,7 @@ public class KlientFederate {
     public static int timer;
     public static int maxKlientId = 0;
 
+    private int simTime;
     private RTIambassador rtiamb;
     private KlientFederateAmbassador fedamb;
     private HLAfloat64TimeFactory timeFactory;
@@ -167,7 +168,6 @@ public class KlientFederate {
         rtiamb.publishInteractionClass(koniecSymulacjiHandle);
     }
 
-
     private void advanceTime(double timeStep) throws RTIexception {
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
@@ -190,7 +190,6 @@ public class KlientFederate {
         HLAinteger16BE obslugiwanyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObslugiwany()));
         attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
-        System.out.println(klient.getKlientHandle() + " " + attributes + " " + generateTag() + " " + time);
         rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
     }
 
@@ -216,26 +215,30 @@ public class KlientFederate {
 
 
     public void klientUtylizacja(int czasSymulacji) throws RTIexception {
-//            for(int i = 0 ; i < listaKlientow.size() ; i++) {
-////                if (listaKlientow.get(i).isObsluzony()) {
-////                    listaKlientow.remove(i);
-////                    log(listaKlientow.get(i).getId() + " usuniety.");
-////                }
-////
-////                if(czasSymulacji == 50){
-////                    listaKlientow.get(i).setObsluzony(true);
-////                    updateAttributeValues(listaKlientow.get(i));
-////                }
-//            }
+        log(listaKlientow.toString());
+        simTime = czasSymulacji;
+        Klient klient;
+        for (int i = 0; i < listaKlientow.size(); i++) {
+            klient = listaKlientow.get(i);
+            if (klient.getCzasUtworzenia() <= czasSymulacji && klient.getKlientHandle() == null) {
+                klient.setKlientHandle(registerObject());
+                System.out.println("1!!");
+                updateAttributeValues(klient);
+            }
+            if(czasSymulacji == 50){
+                listaKlientow.get(i).setObsluzony(1);
+                updateAttributeValues(listaKlientow.get(i));
+            }
+        }
         log(listaKlientow.toString());
     }
 
     public void rtiNowyKlient() throws Exception {
-        log("GenerujeKlienta");
-        Klient klient = new Klient();
+        Klient klient = new Klient(simTime + 1);
         klient.setId(maxKlientId + 1);
         maxKlientId = maxKlientId + 1;
         listaKlientow.add(klient);
+        log("KlientId: " + klient.getId() + " nowy klient wygenerowany.");
     }
 
     public void rtiUpdateKlient(ObjectInstanceHandle klient, int id, int idKolejka, int obsluzony, int obslugiwany, int priorytet) {
@@ -243,7 +246,7 @@ public class KlientFederate {
         int index = -1;
         for (int i = 0; i < listaKlientow.size(); i++)    //znajdz klienta ktory byl updatowany
         {
-            if (listaKlientow.get(i).KlientHandle.equals(klient))
+            if (listaKlientow.get(i).getKlientHandle().equals(klient))
                 index = i;
         }
         if (index != -1) //przydziel mu wartosci

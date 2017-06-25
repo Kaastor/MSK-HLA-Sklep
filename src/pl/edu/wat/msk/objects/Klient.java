@@ -10,13 +10,16 @@ public class Klient {
     private int obslugiwany;
     private int obsluzony;
     private int idKolejki;
+    private int czasUtworzenia;
 
-    public ObjectInstanceHandle KlientHandle;
+    private ObjectInstanceHandle KlientHandle;
 
     //kontruktor dla klienta
-    public Klient()
+    public Klient(int czasUtworzenia)
     {
         this.id = 0;
+        this.KlientHandle = null;
+        this.czasUtworzenia = czasUtworzenia;
         this.priorytet = 0;
         this.obslugiwany = 0;
         this.obsluzony = 0;
@@ -78,10 +81,19 @@ public class Klient {
         KlientHandle = klientHandle;
     }
 
+    public int getCzasUtworzenia() {
+        return czasUtworzenia;
+    }
+
+    public void setCzasUtworzenia(int czasUtworzenia) {
+        this.czasUtworzenia = czasUtworzenia;
+    }
+
     @Override
     public String toString() {
         return "Klient{" +
                 "id=" + id +
+                ", KlientHandle=" + KlientHandle +
                 '}';
     }
 }

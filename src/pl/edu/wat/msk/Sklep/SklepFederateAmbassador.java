@@ -139,7 +139,7 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
-        //na nikogo nie subuje
+
    }
 
     @Override
