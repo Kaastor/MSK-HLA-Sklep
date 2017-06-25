@@ -12,12 +12,13 @@ public class Klient {
     private int idKolejki;
     private int czasUtworzenia;
 
-    public ObjectInstanceHandle KlientHandle;
+    private ObjectInstanceHandle KlientHandle;
 
     //kontruktor dla klienta
     public Klient(int czasUtworzenia)
     {
         this.id = 0;
+        this.KlientHandle = null;
         this.czasUtworzenia = czasUtworzenia;
         this.priorytet = 0;
         this.obslugiwany = 0;
@@ -92,6 +93,7 @@ public class Klient {
     public String toString() {
         return "Klient{" +
                 "id=" + id +
+                ", KlientHandle=" + KlientHandle +
                 '}';
     }
 }
