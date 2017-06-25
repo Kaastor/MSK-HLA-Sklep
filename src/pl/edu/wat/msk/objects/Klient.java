@@ -7,8 +7,8 @@ public class Klient {
 
     private int id;
     private int priorytet;
-    private boolean obslugiwany;
-    private boolean obsluzony;
+    private int obslugiwany;
+    private int obsluzony;
     private int idKolejki;
 
     public ObjectInstanceHandle KlientHandle;
@@ -18,8 +18,8 @@ public class Klient {
     {
         this.id = 0;
         this.priorytet = 0;
-        this.obslugiwany = false;
-        this.obsluzony = false;
+        this.obslugiwany = 0;
+        this.obsluzony = 0;
         this.idKolejki = 0;
     }
 
@@ -46,19 +46,19 @@ public class Klient {
         this.priorytet = priorytet;
     }
 
-    public boolean isObslugiwany() {
+    public int getObslugiwany() {
         return obslugiwany;
     }
 
-    public void setObslugiwany(boolean obslugiwany) {
+    public void setObslugiwany(int obslugiwany) {
         this.obslugiwany = obslugiwany;
     }
 
-    public boolean isObsluzony() {
+    public int getObsluzony() {
         return obsluzony;
     }
 
-    public void setObsluzony(boolean obsluzony) {
+    public void setObsluzony(int obsluzony) {
         this.obsluzony = obsluzony;
     }
 

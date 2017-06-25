@@ -139,7 +139,72 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
-        //na nikogo nie subuje
+        int id=0,  idKolejka =0, obsluzony=0, obslugiwany=0, priorytet=0;
+
+        StringBuilder builder = new StringBuilder( "Reflection for object:" );
+        builder.append( " handle=" + theObject );
+        builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+
+        // print the attribute information
+        builder.append( ", attributeCount=" + theAttributes.size() );
+        builder.append( "\n" );
+        for( AttributeHandle attributeHandle : theAttributes.keySet() )
+        {
+            // print the attibute handle
+            builder.append( "\tattributeHandle=" );
+
+            if( attributeHandle.equals(klientFederate.idHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " id:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                id = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else if( attributeHandle.equals(klientFederate.idKolejkiHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " idKolejkiHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                idKolejka = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else if( attributeHandle.equals(klientFederate.obslugiwanyHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " obslugiwanyHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                obslugiwany = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else if( attributeHandle.equals(klientFederate.obsluzonyHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " obsluzonyHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                obsluzony = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else if( attributeHandle.equals(klientFederate.priorytetHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " priorytetHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                priorytet = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else
+            {
+                builder.append( attributeHandle );
+                builder.append( " (Unknown)   " );
+            }
+
+            builder.append( "\n" );
+        }
+
+        log( builder.toString() );
+
+        this.klientFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet);
    }
 
     @Override
@@ -182,7 +247,10 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
         if( interactionClass.equals(klientFederate.generujKlientaHandle) )
         {
             builder.append( " (generujKlienta)" );
-            this.klientFederate.rtiNowyKlient();
+            try {
+                this.klientFederate.rtiNowyKlient();
+            }
+            catch (Exception e){}
         }
         else if( interactionClass.equals(klientFederate.koniecSymulacjiHandle) )
         {

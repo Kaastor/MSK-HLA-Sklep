@@ -19,3 +19,445 @@ ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name
 ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
 ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
 ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-32791] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-32791] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-55497] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-55497] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-25561] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-25561] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-8744] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-45510] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-44922] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10010] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-42087] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-42087] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-48774] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-62655] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10145] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-41925] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: already announced
+WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-9660] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
