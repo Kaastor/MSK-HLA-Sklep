@@ -84,7 +84,6 @@ public class Stats {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    //federat.advanceTime(1.0);
 
                     Stats stats = new Stats(federat);
                     stats.frame.setVisible(true);
