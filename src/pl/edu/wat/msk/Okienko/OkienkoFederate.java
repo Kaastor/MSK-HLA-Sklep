@@ -38,6 +38,7 @@ public class OkienkoFederate {
     protected EncoderFactory encoderFactory;
 
     protected InteractionClassHandle koniecSymulacjiHandle;
+    protected InteractionClassHandle klientObsluzonyHandle;
 
     //udostepniane z fom
     protected ObjectClassHandle KlientHandle;
@@ -158,6 +159,9 @@ public class OkienkoFederate {
 
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
         rtiamb.publishInteractionClass(koniecSymulacjiHandle);
+
+        klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
+        rtiamb.publishInteractionClass(klientObsluzonyHandle);
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
@@ -190,6 +194,13 @@ public class OkienkoFederate {
         timer = ITERATIONS;
     }
 
+    private void sendInteraction(String type) throws RTIexception {
+        HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
+        if (type.equals("klientObsluzony")) {
+            ParameterHandleValueMap parameters1 = rtiamb.getParameterHandleValueMapFactory().create(0);
+            rtiamb.sendInteraction(klientObsluzonyHandle, parameters1, generateTag(), time);
+        }
+    }
 
     public void obslugaKlientow(int czasSymulacji) throws RTIexception, Exception {
         simTime = czasSymulacji;
@@ -224,7 +235,7 @@ public class OkienkoFederate {
             else{
                 if(okienko.getObslugiwany() != null) { //ktos jest w ogole obslugiwany -> ustawione zakonczenieObslugiCzas
                     if (zakonczenieObslugiCzas == simTime) {
-                        //sendInteraction("obsluzony", okienko.getObslugiwany().getId());
+                        sendInteraction("klientObsluzony");
                         log("KlientId " + okienko.getObslugiwany().getId() + " został obsluzony");
                         listaKlientow.remove(okienko.getObslugiwany());
                         okienko.setObslugiwany(null);

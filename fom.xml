@@ -171,6 +171,14 @@
                     semantics="NA">
             </interactionClass>
             <interactionClass
+                    name="klientObsluzony"
+                    sharing="PublishSubscribe"
+                    dimensions="NA"
+                    transportation="HLAreliable"
+                    order="Receive"
+                    semantics="NA">
+            </interactionClass>
+            <interactionClass
                     name="generujKlienta"
                     sharing="PublishSubscribe"
                     dimensions="NA"
