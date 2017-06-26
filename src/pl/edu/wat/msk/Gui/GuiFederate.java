@@ -99,9 +99,38 @@ public class GuiFederate {
     }
     public void runFederate( String federateName ) throws Exception
     {
-        createFederation(federateName);
+        log( "Creating RTIambassador..." );
+        rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
+        encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
+        log( "Connecting..." );
+        fedamb = new GuiFederateAmbassador( this );
+        rtiamb.connect( fedamb, CallbackModel.HLA_EVOKED );
+        log( "Creating Federation..." );
+        try
+        {
+            URL[] modules = new URL[]{
+                    (new File("fom.xml")).toURI().toURL()
+            };
+
+            rtiamb.createFederationExecution( "MSKfed", modules );
+            log( "Created Federation MSKfed" );
+        }
+        catch( FederationExecutionAlreadyExists exists )
+        {
+            log( "Didn't create federation, it already existed" );
+        }
+        catch( MalformedURLException urle )
+        {
+            log( "Exception loading one of the FOM modules from disk: " + urle.getMessage() );
+            urle.printStackTrace();
+            return;
+        }
+
+        rtiamb.joinFederationExecution( federateName, "GuiFederate",	"MSKfed" );
+        log( "Joined Federation as " + federateName );
 
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
+
         rtiamb.registerFederationSynchronizationPoint( READY_TO_RUN, null );
         while( fedamb.isAnnounced == false )
         {
@@ -116,6 +145,8 @@ public class GuiFederate {
         }
         enableTimePolicy();
         log( "Time Policy Enabled" );
+        //////////////////////////////////////////////////////////////////////////////
+
         publishAndSubscribe();
         log( "Published and Subscribed" );
 
@@ -143,10 +174,10 @@ public class GuiFederate {
 
     private void publishAndSubscribe() throws RTIexception
     {
-        koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
-        rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
+        this.koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
+        rtiamb.publishInteractionClass(koniecSymulacjiHandle);
 
-        daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
+        this.daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
         rtiamb.publishInteractionClass(daneSymulacjiHandle);
 
         czasObslugiHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "czasObslugi");
@@ -163,6 +194,7 @@ public class GuiFederate {
 
         if(type.equals("koniecSymulacji"))
         {
+            log("Wysylam koniecSymulacji");
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
         }

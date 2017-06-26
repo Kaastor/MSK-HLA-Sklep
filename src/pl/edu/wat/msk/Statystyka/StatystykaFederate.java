@@ -14,6 +14,7 @@ import hla.rti1516e.time.HLAfloat64TimeFactory;
 import pl.edu.wat.msk.GUI;
 import pl.edu.wat.msk.Gui.GuiFederate;
 import pl.edu.wat.msk.Gui.GuiFederateAmbassador;
+import pl.edu.wat.msk.Stats;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -99,9 +100,38 @@ public class StatystykaFederate {
     }
     public void runFederate( String federateName ) throws Exception
     {
-        createFederation(federateName);
+        log( "Creating RTIambassador..." );
+        rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
+        encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
+        log( "Connecting..." );
+        fedamb = new StatystykaFederateAmbassador( this );
+        rtiamb.connect( fedamb, CallbackModel.HLA_EVOKED );
+        log( "Creating Federation..." );
+        try
+        {
+            URL[] modules = new URL[]{
+                    (new File("fom.xml")).toURI().toURL()
+            };
+
+            rtiamb.createFederationExecution( "MSKfed", modules );
+            log( "Created Federation MSKfed" );
+        }
+        catch( FederationExecutionAlreadyExists exists )
+        {
+            log( "Didn't create federation, it already existed" );
+        }
+        catch( MalformedURLException urle )
+        {
+            log( "Exception loading one of the FOM modules from disk: " + urle.getMessage() );
+            urle.printStackTrace();
+            return;
+        }
+
+        rtiamb.joinFederationExecution( federateName, "StatystykaFederate",	"MSKfed" );
+        log( "Joined Federation as " + federateName );
 
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
+
         rtiamb.registerFederationSynchronizationPoint( READY_TO_RUN, null );
         while( fedamb.isAnnounced == false )
         {
@@ -116,8 +146,12 @@ public class StatystykaFederate {
         }
         enableTimePolicy();
         log( "Time Policy Enabled" );
+        //////////////////////////////////////////////////////////////////////////////
+
         publishAndSubscribe();
         log( "Published and Subscribed" );
+
+        Stats.run(this);
 
     }
 
@@ -142,16 +176,8 @@ public class StatystykaFederate {
 
     private void publishAndSubscribe() throws RTIexception
     {
-        koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
+        this.koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
         rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
-
-        daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
-        rtiamb.publishInteractionClass(daneSymulacjiHandle);
-
-        czasObslugiHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "czasObslugi");
-        liczbaNaplywajacychKlientowHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaNaplywajacychKlientow");
-        okresCzasuNaplywuHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "okresCzasuNaplywu");
-        liczbaOkienekHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaOkienek");
 
 
     }
@@ -165,25 +191,6 @@ public class StatystykaFederate {
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
         }
-    }
-
-    public void sendStats (float czas, int naplywajacy, float okres, int okienka) throws RTIexception{
-        HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
-
-        ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(4);
-        HLAfloat64BE czasObslugi = encoderFactory.createHLAfloat64BE( czas );
-        HLAinteger32BE liczbaNaplywajacych = encoderFactory.createHLAinteger32BE( naplywajacy);
-        HLAfloat64BE okresCzasuNaplywu = encoderFactory.createHLAfloat64BE( okres);
-        HLAinteger32BE liczbaOkienek = encoderFactory.createHLAinteger32BE( okienka);
-
-        parameters.put(czasObslugiHandle, czasObslugi.toByteArray());
-        parameters.put(liczbaNaplywajacychKlientowHandle, liczbaNaplywajacych.toByteArray());
-        parameters.put(okresCzasuNaplywuHandle, okresCzasuNaplywu.toByteArray());
-        parameters.put(liczbaOkienekHandle, liczbaOkienek.toByteArray());
-
-        log("sending configuration");
-
-        rtiamb.sendInteraction(daneSymulacjiHandle, parameters,generateTag(),time);
     }
 
     public void advanceTime( double timeStep ) throws RTIexception
@@ -210,6 +217,11 @@ public class StatystykaFederate {
         {
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
         }
+    }
+
+    public void end_sim()
+    {
+        timer = ITERATIONS;
     }
 
     private byte[] generateTag()

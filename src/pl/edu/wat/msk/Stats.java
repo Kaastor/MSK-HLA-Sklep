@@ -1,12 +1,17 @@
 package pl.edu.wat.msk;
 
+import pl.edu.wat.msk.Gui.GuiFederate;
+import pl.edu.wat.msk.Statystyka.StatystykaFederate;
+
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Pawel on 2017-06-25.
  */
 public class Stats {
 
+    public static StatystykaFederate statystykaFederate;
     private JFrame frame;
 
     private JLabel liczbaKlientowLabel;
@@ -20,6 +25,12 @@ public class Stats {
     public Stats() {
         init();
     }
+
+    public Stats (StatystykaFederate federate){
+        this.statystykaFederate = federate;
+        init();
+    }
+
 
     public void setStats(int liczbaKlientow, int liczbaObsluzonych){
         liczbaKlientowText.setText(String.valueOf(liczbaKlientow));
@@ -67,8 +78,16 @@ public class Stats {
         frame.setVisible(true);
     }
 
-    public static void main(String args[]) {
-        Stats stat = new Stats();
-        stat.setStats(100,20);
+    public static void run(StatystykaFederate federat) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Stats stats = new Stats(federat);
+                    stats.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

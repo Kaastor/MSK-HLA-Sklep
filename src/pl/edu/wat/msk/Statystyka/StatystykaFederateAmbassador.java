@@ -32,7 +32,7 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
 
     private void log( String message )
     {
-        System.out.println( "SklepFederateAmbassador: " + message );
+        System.out.println( "StatytykaFederateAmbassador: " + message );
     }
 
     private short decodeValue(byte[] bytes )
@@ -49,7 +49,6 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
             return 0;
         }
     }
-    //dsadas
 
     @Override
     public void synchronizationPointRegistrationFailed( String label, SynchronizationPointFailureReason reason )
@@ -181,6 +180,16 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
         StringBuilder builder = new StringBuilder("Interaction Received:");
 
         builder.append(" handle=" + interactionClass);
+
+
+        if( interactionClass.equals(statystykaFederate.koniecSymulacjiHandle) )
+        {
+            builder.append( " (koniecSymulacji)" );
+            log("odebralem :)");
+            this.statystykaFederate.end_sim();
+            this.statystykaFederate.endSim();
+
+        }
 //        if( interactionClass.equals(federate.daneStartowe) )
 //        {
 //            builder.append( " (daneStartowe)" );

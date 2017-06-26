@@ -596,384 +596,148 @@ ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: 
 WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-44913] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
 ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-51412] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-51412] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
 ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JInteractionClassNotPublished: not published: 521
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc: org.portico.lrc.compat.JCouldNotOpenFED: Error opening fed file from [file:/C:/Users/Pawel/IdeaProjects/HLA_Sklep/MSK-HLA-Sklep/MSKfom.xml]: C:\Users\Pawel\IdeaProjects\HLA_Sklep\MSK-HLA-Sklep\MSKfom.xml (Nie można odnaleźć określonego pliku)
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JInteractionClassNotPublished: not published: 521
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-4638] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-4638] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: already announced
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-ERROR [main] portico.lrc: hla.rti1516e.exceptions.CallNotAllowedFromWithinCallback: Currently ticking
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-8718] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56052] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56052] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-18808] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-18808] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-18808] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-18808] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56153] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56153] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56153] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-56153] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
+WARN  [VERIFY_SUSPECT.TimerThread,MSKfed,paw-z580-60432] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-32960] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: already announced
+WARN  [VERIFY_SUSPECT.TimerThread,MSKfed,paw-z580-36071] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-12917] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [2]
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc: org.portico.lrc.compat.JAttributeNotOwned: attribute [507] of instance: 2097153 not owned by [Okienko] (owner:Klient)
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-42884] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: already announced
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc: org.portico.lrc.compat.JAttributeNotOwned: attribute [512] of instance: 4194304 not owned by [Okienko] (owner:Klient)
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-5379] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-58542] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-42670] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
 ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
 ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
 ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederateAlreadyExecutionMember: federate name in use: Sklep
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10423] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10423] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10423] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-10423] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+WARN  [AWT-EventQueue-0] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
+ERROR [AWT-EventQueue-0] portico.lrc: org.portico.lrc.compat.JFederateNotExecutionMember: 
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-23780] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
 WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-55414] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-55414] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-39835] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-17063] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-17063] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: already announced
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-26975] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-26975] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-26975] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Sklep]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Sklep]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-31271] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-WARN  [main] portico.lrc: MOM support is currently unsupported in IEEE-1516e federations.
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Okienko]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Okienko]: label already registered
-ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=federation
-ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: federation
-ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Klient]: already registered
-ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Klient]: label already registered
-WARN  [VERIFY_SUSPECT.TimerThread,federation,Przemys-11220] portico.lrc.jgroups: Detected that federate [1] may have crashed, investigating...
+ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=MSKfed
+ERROR [main] portico.lrc: org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: MSKfed
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [Statystyka]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [Statystyka]: label already registered
