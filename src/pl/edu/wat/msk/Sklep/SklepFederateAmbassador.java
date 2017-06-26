@@ -190,11 +190,12 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
 //                    builder.append( " (generujKlienta)" );
 //                    this.sklepFederate.rti_zamknij_kase();
 //                }
-//        else if( interactionClass.equals(federate.koniecSymulacjiHandle) )
-//        {
-//            builder.append( " (koniecSymulacjiHandle)" );
-//            this.federate.endSim();
-//        }
+
+        if( interactionClass.equals(sklepFederate.koniecSymulacjiHandle) )
+        {
+            builder.append( " (koniecSymulacjiHandle)" );
+            this.sklepFederate.endSim();
+        }
 
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
 
