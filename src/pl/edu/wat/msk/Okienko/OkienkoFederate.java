@@ -340,6 +340,7 @@ public class OkienkoFederate {
         liczbaKlientow++;
     }
 
+
     private void dodajDoKolejki(Klient klient) throws Exception{ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin
         for(Okienko okienko : listaOkienek){
             if(okienko.getId() == klient.getIdKolejki()) {
@@ -383,6 +384,8 @@ public class OkienkoFederate {
                 updateklient.setObsluzony(obsluzony);
                 updateklient.setPriorytet(priorytet);
                 updateklient.setwKolejce(wKolejce);
+                log("Nowy klient: Id: " + updateklient.getId() + ",  idKolejki: " + updateklient.getIdKolejki() +
+                " Priorytet: " + updateklient.getPriorytet());
             }
         }
     }

@@ -129,6 +129,10 @@ public class StatystykaFederate {
 
         Stats.run(this);
 
+        for (timer = 0; timer < ITERATIONS; timer++) {
+
+            advanceTime(1.0);
+        }
     }
 
     public void resign() throws Exception{
