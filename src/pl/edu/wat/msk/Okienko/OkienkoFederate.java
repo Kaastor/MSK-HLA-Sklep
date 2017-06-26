@@ -139,23 +139,6 @@ public class OkienkoFederate {
     }
 
     private void publishAndSubscribe() throws RTIexception {
-
-        this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
-        this.idHandle = rtiamb.getAttributeHandle(this.KlientHandle, "id");
-        this.priorytetHandle = rtiamb.getAttributeHandle(this.KlientHandle, "priorytet");
-        this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
-        this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
-        this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
-        this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
-        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
-        attributes.add(this.idHandle);
-        attributes.add(this.priorytetHandle);
-        attributes.add(this.obslugiwanyHandle);
-        attributes.add(this.obsluzonyHandle);
-        attributes.add(this.idKolejkiHandle);
-        attributes.add(this.wKolejceHandle);
-        rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
-
         this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
         this.idHandle = rtiamb.getAttributeHandle(this.KlientHandle, "id");
         this.priorytetHandle = rtiamb.getAttributeHandle(this.KlientHandle, "priorytet");
@@ -185,24 +168,6 @@ public class OkienkoFederate {
         }
     }
 
-    private void updateAttributeValues(Klient klient) throws RTIexception {
-        AttributeHandleValueMap attributes = rtiamb.getAttributeHandleValueMapFactory().create(1);
-        HLAinteger16BE idValue = encoderFactory.createHLAinteger16BE((short) (klient.getId()));
-        attributes.put(idHandle, idValue.toByteArray());
-        HLAinteger16BE idKolejkiValue = encoderFactory.createHLAinteger16BE((short) (klient.getIdKolejki()));
-        attributes.put(idKolejkiHandle, idKolejkiValue.toByteArray());
-        HLAinteger16BE priorytetValue = encoderFactory.createHLAinteger16BE((short) (klient.getPriorytet()));
-        attributes.put(priorytetHandle, priorytetValue.toByteArray());
-        HLAinteger16BE obsluzonyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObsluzony()));
-        attributes.put(obsluzonyHandle, obsluzonyValue.toByteArray());
-        HLAinteger16BE obslugiwanyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObslugiwany()));
-        attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
-        HLAinteger16BE wKolejceValue = encoderFactory.createHLAinteger16BE((short) (klient.getwKolejce()));
-        attributes.put(wKolejceHandle, wKolejceValue.toByteArray());
-        HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
-        rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
-    }
-
 
     private void enableTimePolicy() throws Exception {
         HLAfloat64Interval lookahead = timeFactory.makeInterval(fedamb.federateLookahead);
@@ -228,7 +193,6 @@ public class OkienkoFederate {
     public void obslugaKlientow(int czasSymulacji) throws RTIexception, Exception {
         log(listaOkienek.toString());
         log(listaKlientow.toString());
-
         for(Klient klient : listaKlientow){
             if(klient.getwKolejce() == 0){
                 dodajDoKolejki(klient);
@@ -244,18 +208,16 @@ public class OkienkoFederate {
 
     private void dodajDoKolejki(Klient klient) throws Exception{ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin
         for(Okienko okienko : listaOkienek){
-            System.out.println(klient.getIdKolejki() + "!" + okienko.getId());
-
             if(okienko.getId() == klient.getIdKolejki()) {
                 if(klient.getPriorytet() == 1) {
                     okienko.getKolejkaUprzywilejowana().add(klient);
                     klient.setwKolejce(1);
-                    log("Klient " + klient.getId() + " dodany do uprz" + okienko.getKolejkaUprzywilejowana().size());
+//                    log("Klient " + klient.getId() + " dodany do uprz" + okienko.getKolejkaUprzywilejowana().size());
                 }
                 else {
                     okienko.getKolejkaZwykla().add(klient);
                     klient.setwKolejce(1);
-                    log("Klient " + klient.getId() + " dodany do zw" + okienko.getKolejkaZwykla().size());
+//                    log("Klient " + klient.getId() + " dodany do zw" + okienko.getKolejkaZwykla().size());
                 }
             }
         }
