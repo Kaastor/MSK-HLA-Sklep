@@ -176,6 +176,7 @@ public class StatystykaFederate {
 
     }
 
+
     public void sendInteraction(String type) throws RTIexception
     {
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
