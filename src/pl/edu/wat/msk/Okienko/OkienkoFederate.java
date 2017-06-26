@@ -3,7 +3,6 @@ package pl.edu.wat.msk.Okienko;
 
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.EncoderFactory;
-import hla.rti1516e.encoding.HLAinteger16BE;
 import hla.rti1516e.exceptions.FederatesCurrentlyJoined;
 import hla.rti1516e.exceptions.FederationExecutionAlreadyExists;
 import hla.rti1516e.exceptions.FederationExecutionDoesNotExist;
@@ -11,7 +10,6 @@ import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Interval;
 import hla.rti1516e.time.HLAfloat64Time;
 import hla.rti1516e.time.HLAfloat64TimeFactory;
-import pl.edu.wat.msk.Klient.KlientFederate;
 import pl.edu.wat.msk.objects.Klient;
 import pl.edu.wat.msk.objects.Okienko;
 
@@ -24,7 +22,10 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
-    public static int liczbaOkienek =2;
+    public static int liczbaOkienek =1;
+    public static int czasObslugi = 20;
+    public static int zakonczenieObslugiCzas = 0;
+
     public static final int ITERATIONS = 1000000;
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
@@ -51,7 +52,7 @@ public class OkienkoFederate {
     LinkedList<Klient> listaKlientow = new LinkedList<>();
 
     private void log(String message) {
-        System.out.println("OkienkoFederate: " + message);
+        System.out.println(simTime + " :OkienkoFederate: " + message);
     }
 
     private void waitForUser() {
@@ -191,11 +192,45 @@ public class OkienkoFederate {
 
 
     public void obslugaKlientow(int czasSymulacji) throws RTIexception, Exception {
+        simTime = czasSymulacji;
+
         log(listaOkienek.toString());
         log(listaKlientow.toString());
         for(Klient klient : listaKlientow){
             if(klient.getwKolejce() == 0){
                 dodajDoKolejki(klient);
+            }
+        }
+
+        for(Okienko okienko : listaOkienek){
+            if(okienko.getWolne() == 1){//pobierz kogos do obslugi jak jest
+                okienko.setObslugiwany( okienko.getKolejkaUprzywilejowana().poll() );
+                if(okienko.getObslugiwany() != null){
+                    log("KlientId " + okienko.getObslugiwany().getId() + " (uprzywilejowany) został pobrany do obslugi");
+                    okienko.getObslugiwany().setObslugiwany(1);//do etstow
+                    okienko.setWolne(0);
+                    zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
+                }
+                else{
+                    okienko.setObslugiwany( okienko.getKolejkaZwykla().poll() );
+                    if(okienko.getObslugiwany() != null){
+                        log("KlientId " + okienko.getObslugiwany().getId() + " (zwykly) został pobrany do obslugi");
+                        okienko.getObslugiwany().setObslugiwany(1);
+                        okienko.setWolne(0);
+                        zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
+                    }
+                }
+            }
+            else{
+                if(okienko.getObslugiwany() != null) { //ktos jest w ogole obslugiwany -> ustawione zakonczenieObslugiCzas
+                    if (zakonczenieObslugiCzas == simTime) {
+                        //sendInteraction("obsluzony", okienko.getObslugiwany().getId());
+                        log("KlientId " + okienko.getObslugiwany().getId() + " został obsluzony");
+                        listaKlientow.remove(okienko.getObslugiwany());
+                        okienko.setObslugiwany(null);
+                        okienko.setWolne(1);
+                    }
+                }
             }
         }
     }
@@ -212,12 +247,12 @@ public class OkienkoFederate {
                 if(klient.getPriorytet() == 1) {
                     okienko.getKolejkaUprzywilejowana().add(klient);
                     klient.setwKolejce(1);
-//                    log("Klient " + klient.getId() + " dodany do uprz" + okienko.getKolejkaUprzywilejowana().size());
+                    log("Klient " + klient.getId() + " dodany do uprzywilejowanej o Id"+ okienko.getId());
                 }
                 else {
                     okienko.getKolejkaZwykla().add(klient);
                     klient.setwKolejce(1);
-//                    log("Klient " + klient.getId() + " dodany do zw" + okienko.getKolejkaZwykla().size());
+                    log("Klient " + klient.getId() + " dodany do zwyklej o Id" + okienko.getId());
                 }
             }
         }

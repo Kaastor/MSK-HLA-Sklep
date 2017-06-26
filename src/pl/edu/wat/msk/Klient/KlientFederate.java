@@ -48,7 +48,7 @@ public class KlientFederate {
     LinkedList<Klient> listaKlientow = new LinkedList<>();
 
     private void log(String message) {
-        System.out.println("KlientFederate: " + message);
+        System.out.println(simTime + " :KlientFederate: " + message);
     }
 
     private void waitForUser() {

@@ -214,7 +214,6 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
         }
 
         log( builder.toString() );
-        log( "chujdupakurwa" );
         this.okienkoFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet, wKolejce);
     }
 

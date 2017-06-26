@@ -107,6 +107,7 @@ public class Klient {
                 ", priorytet =" + priorytet +
                 ", idKolejki=" + idKolejki +
                 ", wKolejce=" + wKolejce +
+                ", obslugiwany=" + obslugiwany +
                 '}';
     }
 }

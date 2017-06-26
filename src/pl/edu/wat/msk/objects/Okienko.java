@@ -11,6 +11,7 @@ public class Okienko {
     private LinkedList<Klient> kolejkaZwykla;
     private LinkedList<Klient> kolejkaUprzywilejowana;
     private int wolne;
+    private Klient obslugiwany;
     private ObjectInstanceHandle OkienkoHandle;
     private int czasUtworzenia;
 
@@ -21,8 +22,9 @@ public class Okienko {
         this.OkienkoHandle = null;
         this.czasUtworzenia = czasUtworzenia;
         this.kolejkaZwykla = new LinkedList<>();
+        this.obslugiwany = null;
         this.kolejkaUprzywilejowana = new LinkedList<>();
-        this.wolne = 0;
+        this.wolne = 1;
     }
 
     //konstruktor dla odbiorcy(subskrybującego)
@@ -30,6 +32,14 @@ public class Okienko {
     {
         this.OkienkoHandle = KlientHandle;
         this.id = 0;
+    }
+
+    public Klient getObslugiwany() {
+        return obslugiwany;
+    }
+
+    public void setObslugiwany(Klient obslugiwany) {
+        this.obslugiwany = obslugiwany;
     }
 
     public int getId() {
