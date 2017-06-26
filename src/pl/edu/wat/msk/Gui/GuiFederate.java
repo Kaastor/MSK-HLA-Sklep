@@ -129,9 +129,12 @@ public class GuiFederate {
         log( "Published and Subscribed" );
 
         for (timer = 0; timer < ITERATIONS; timer++) {
+            if (!zakonczSymulacje) {
                 simTime = timer;
                 symulacja();
                 advanceTime(1.0);
+            }
+            else endSim();
         }
         resign();
     }

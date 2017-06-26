@@ -1,8 +1,11 @@
 package pl.edu.wat.msk.Statystyka;
 
+import hla.rti.jlc.EncodingHelpers;
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.DecoderException;
+import hla.rti1516e.encoding.HLAfixedArray;
 import hla.rti1516e.encoding.HLAinteger16BE;
+import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 import pl.edu.wat.msk.Sklep.SklepFederate;
@@ -184,16 +187,17 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
 
         if( interactionClass.equals(statystykaFederate.koniecSymulacjiHandle) )
         {
-            System.out.println("GOWNO: ODBIERAM KONIEC SYMULACJI");
-            builder.append( " (koniecSymulacjiHandle)" );
-            log("odebralem :)");
-            this.statystykaFederate.end_sim();
-            this.statystykaFederate.endSim();
-
+            System.out.println("Po co mi koniec symulacji? XD");
         }
         if ( interactionClass.equals(statystykaFederate.wyslijWynikiHandle))
         {
-            System.out.println("Odebrałem wyniki !!! ");
+                int liczbaKlientow = EncodingHelpers.decodeInt(theParameters.get(statystykaFederate.liczbaKlientowHandle));
+                int liczbaObsluzonych = EncodingHelpers.decodeInt(theParameters.get(statystykaFederate.liczbaObsluzonychHandle));
+
+                statystykaFederate.stats.setStats(liczbaKlientow, liczbaObsluzonych);
+
+            System.out.println("Klienci: " + liczbaKlientow);
+            System.out.println("Obsluzeni: " + liczbaObsluzonych);
         }
 //        if( interactionClass.equals(federate.daneStartowe) )
 //        {

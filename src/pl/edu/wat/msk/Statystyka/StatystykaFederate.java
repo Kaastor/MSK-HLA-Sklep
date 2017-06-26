@@ -48,6 +48,8 @@ public class StatystykaFederate {
         protected ParameterHandle liczbaKlientowHandle;
         protected ParameterHandle liczbaObsluzonychHandle;
 
+        public Stats stats;
+
 
 
     private void log( String message )
@@ -127,7 +129,15 @@ public class StatystykaFederate {
         publishAndSubscribe();
         log( "Published and Subscribed" );
 
-        Stats.run(this);
+        //stats.run(this);
+        this.stats = new Stats();
+
+        for (timer = 0; timer < ITERATIONS; timer++) {
+
+            advanceTime(1.0);
+        }
+
+
 
     }
 
@@ -156,9 +166,10 @@ public class StatystykaFederate {
         rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
 
         wyslijWynikiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.wyslijWyniki" );
-        rtiamb.subscribeInteractionClass(wyslijWynikiHandle);
         liczbaKlientowHandle = rtiamb.getParameterHandle(wyslijWynikiHandle, "liczbaKlientow");
         liczbaObsluzonychHandle = rtiamb.getParameterHandle(wyslijWynikiHandle, "liczbaObsluzonych");
+        rtiamb.subscribeInteractionClass(wyslijWynikiHandle);
+
     }
 
     public void sendInteraction(String type) throws RTIexception
@@ -192,10 +203,6 @@ public class StatystykaFederate {
         }
     }
 
-    public void end_sim()
-    {
-        timer = ITERATIONS;
-    }
 
     private byte[] generateTag()
     {

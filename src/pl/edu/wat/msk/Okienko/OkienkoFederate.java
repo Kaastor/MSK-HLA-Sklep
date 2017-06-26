@@ -250,7 +250,8 @@ public class OkienkoFederate {
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + + fedamb.federateLookahead);
 
         ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(2);
-        HLAfloat64BE klienci = encoderFactory.createHLAfloat64BE( this.liczbaKlientow );
+        //HLAinteger32BE klienci = encoderFactory.createHLAinteger32BE( this.liczbaKlientow );
+        HLAinteger32BE klienci = encoderFactory.createHLAinteger32BE( this.liczbaKlientow );
         HLAinteger32BE obsluzeni = encoderFactory.createHLAinteger32BE( this.liczbaObsluzonych);
 
         parameters.put(liczbaKlientowHandle, klienci.toByteArray());

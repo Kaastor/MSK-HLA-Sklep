@@ -254,7 +254,7 @@
                     transportation="HLAreliable"
                     order="Receive"
                     semantics="NA">
-                <parameter name="liczbaKlientow" dataType="HLAintegerBE" semantics="NA" />
+                <parameter name="liczbaKlientow" dataType="HLAinteger32BE" semantics="NA" />
                 <parameter name="liczbaObsluzonych" dataType="HLAinteger32BE" semantics="NA" />
             </interactionClass>
         </interactionClass>

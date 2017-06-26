@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public class Stats {
 
+
     public static StatystykaFederate statystykaFederate;
     private JFrame frame;
 
@@ -36,6 +37,8 @@ public class Stats {
         liczbaKlientowText.setText(String.valueOf(liczbaKlientow));
         liczbaObsluzonychText.setText(String.valueOf(liczbaObsluzonych));
         przepustowoscText.setText(String.valueOf((float)((float)liczbaObsluzonych/liczbaKlientow)*100) + "%");
+
+        statystykaFederate.endSim();
     }
 
     private void init() {
@@ -74,7 +77,6 @@ public class Stats {
         frame.add(liczbaObsluzonychText);
         frame.add(przepustowoscText);
 
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setVisible(true);
     }
 
@@ -82,7 +84,7 @@ public class Stats {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    federat.advanceTime(1.0);
+                    //federat.advanceTime(1.0);
 
                     Stats stats = new Stats(federat);
                     stats.frame.setVisible(true);
