@@ -119,7 +119,7 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
                                         String objectName ) throws FederateInternalError
     {
         if(theObjectClass.equals(this.okienkoFederate.KlientHandle)) {
-            log("Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName);
+//            log("Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName);
             try {
                 this.okienkoFederate.rtiNowyKlient(theObject);
             } catch (Exception e) {
@@ -224,7 +224,7 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
                 builder.append("\n");
             }
 
-            log(builder.toString());
+//            log(builder.toString());
             this.okienkoFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet, wKolejce);
         }
         else {
@@ -266,7 +266,7 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
 
                 builder.append( "\n" );
             }
-            log( builder.toString() );
+//            log( builder.toString() );
             try {
                 this.okienkoFederate.rtiUpdateGui(theObject, liczbaOkienek, czasObslugi);
             }
