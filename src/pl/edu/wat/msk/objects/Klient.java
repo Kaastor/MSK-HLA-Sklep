@@ -23,14 +23,15 @@ public class Klient {
         this.priorytet = 0;
         this.obslugiwany = 0;
         this.obsluzony = 0;
-        this.idKolejki = 0;
+        this.idKolejki = 1;
     }
 
     //konstruktor dla odbiorcy(subskrybującego)
     public Klient(ObjectInstanceHandle KlientHandle)
     {
         this.KlientHandle = KlientHandle;
-        this.idKolejki = 0;
+        this.idKolejki = 1;
+        this.priorytet = 0;
     }
 
     public int getId() {
