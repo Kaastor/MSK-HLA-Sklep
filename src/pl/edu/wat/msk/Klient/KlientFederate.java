@@ -111,7 +111,8 @@ public class KlientFederate {
         log("Published and Subscribed");
 
         for (timer = 0; timer < ITERATIONS; timer++) {
-            klientGeneracja(timer);
+            simTime = timer;
+            klientGeneracja();
             advanceTime(1.0);
         }
         resign();
@@ -161,14 +162,14 @@ public class KlientFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-        log("Advancing...");
+//        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
         while (fedamb.isAdvancing) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
-        log("Time Advanced to " + fedamb.federateTime);
+//        log("Time Advanced to " + fedamb.federateTime);
     }
 
     private void updateAttributeValues(Klient klient) throws RTIexception {
@@ -207,14 +208,14 @@ public class KlientFederate {
 
     public void endSim() {
         timer = ITERATIONS;
+        listaKlientow.clear();
     }
 
-    public void klientGeneracja(int czasSymulacji) throws RTIexception {
-        simTime = czasSymulacji;
+    public void klientGeneracja() throws RTIexception {
         Klient klient;
         for (int i = 0; i < listaKlientow.size(); i++) { //tworzenie klienta
             klient = listaKlientow.get(i);
-            if (klient.getCzasUtworzenia() <= czasSymulacji && klient.getKlientHandle() == null) {
+            if (klient.getCzasUtworzenia() <= simTime && klient.getKlientHandle() == null) {
                 klient.setKlientHandle(registerObject());
                 updateAttributeValues(klient);
             }

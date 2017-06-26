@@ -36,7 +36,7 @@ public class SklepFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle generujKlientaHandle;
 
-
+    public int simTime;
     private void log(String message) {
         System.out.println("SklepFederate: " + message);
     }
@@ -100,8 +100,8 @@ public class SklepFederate {
         log("Published and Subscribed");
 
         for (timer = 0; timer < ITERATIONS; timer++) {
+            simTime = timer;
             generujKlientow(timer);
-
             advanceTime(1.0);
         }
         resign();
@@ -144,7 +144,6 @@ public class SklepFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);

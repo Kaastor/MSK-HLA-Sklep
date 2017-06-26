@@ -122,7 +122,8 @@ public class OkienkoFederate {
             rtiNoweOkienko();
 
         for (timer = 0; timer < ITERATIONS; timer++) {
-            obslugaKlientow(timer);
+            simTime = timer;
+            obslugaKlientow();
             advanceTime(1.0);
         }
         resign();
@@ -168,14 +169,14 @@ public class OkienkoFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-        log("Advancing...");
+//        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
         while (fedamb.isAdvancing) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
-        log("Time Advanced to " + fedamb.federateTime);
+//        log("Time Advanced to " + fedamb.federateTime);
     }
 
 
@@ -197,6 +198,8 @@ public class OkienkoFederate {
 
     public void endSim() {
         timer = ITERATIONS;
+        listaKlientow.clear();
+        listaOkienek.clear();
     }
 
     private void sendInteraction(String type, int klientId) throws RTIexception {
@@ -214,9 +217,7 @@ public class OkienkoFederate {
         }
     }
 
-    public void obslugaKlientow(int czasSymulacji) throws Exception {
-        simTime = czasSymulacji;
-
+    public void obslugaKlientow() throws Exception {
         log(listaOkienek.toString());
         log(listaKlientow.toString());
         for(Klient klient : listaKlientow){

@@ -43,11 +43,12 @@ public class GuiFederate {
     protected ParameterHandle okresCzasuNaplywuHandle;
     protected ParameterHandle liczbaOkienekHandle;
 
-
+    public int simTime;
+    public static boolean zakonczSymulacje = false;
 
     private void log( String message )
     {
-        System.out.println( "GuiFederate: " + message );
+        System.out.println( simTime + " GuiFederate: " + message );
     }
 
     private void waitForUser()
@@ -124,7 +125,12 @@ public class GuiFederate {
         log( "Published and Subscribed" );
 
         GUI.run(this);
-
+        for (timer = 0; timer < ITERATIONS; timer++) {
+            simTime = timer;
+            koniecSymulacji();
+            advanceTime(1.0);
+        }
+        resign();
     }
 
     public void resign() throws Exception{
@@ -168,7 +174,6 @@ public class GuiFederate {
 
         if(type.equals("koniecSymulacji"))
         {
-            System.out.println("GOWNO: WYSYLAM KONIEC SYMULACJI");
             log("Wysylam koniecSymulacji");
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
@@ -196,9 +201,11 @@ public class GuiFederate {
 
     public void advanceTime( double timeStep ) throws RTIexception
     {
+        log("SimTime: " + fedamb.federateTime);
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + timeStep );
         rtiamb.timeAdvanceRequest( time );
+
         while( fedamb.isAdvancing )
         {
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
@@ -230,7 +237,12 @@ public class GuiFederate {
         timer = ITERATIONS;
     }
 
-
+    private void koniecSymulacji() throws Exception{
+        if(zakonczSymulacje){
+            sendInteraction("koniecSymulacji");
+            endSim();
+        }
+    }
 
     public static void main( String[] args )
     {

@@ -120,9 +120,8 @@ public class GUI {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        guiFederate.sendInteraction("koniecSymulacji");
-                        koniecSymulacji = true;
-                        guiFederate.advanceTime(1.0);
+//                        guiFederate.sendInteraction("koniecSymulacji");
+                        GuiFederate.zakonczSymulacje = true;
 //                        guiFederate.resign(); //zanim wysle juz go nie ma?
 
                     } catch (Exception e1) {
@@ -137,8 +136,8 @@ public class GUI {
                 public void windowClosing(WindowEvent e) {
                     try {
 //                        guiFederate.sendInteraction("koniecSymulacji"); // tylko jedno zamykanie -> stop
-                        guiFederate.advanceTime(1.0);
-                        guiFederate.resign();
+//                        guiFederate.advanceTime(1.0);
+//                        guiFederate.resign();
                     } catch (Exception e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
