@@ -28,6 +28,7 @@ public class GuiFederate {
     private GuiFederateAmbassador fedamb;
     private HLAfloat64TimeFactory timeFactory;
     protected EncoderFactory encoderFactory;
+    private int zakonczSymulacjeCzas;
 
     protected InteractionClassHandle koniecSymulacjiHandle;
 
@@ -114,6 +115,8 @@ public class GuiFederate {
                 Integer.valueOf(GUI.liczbaKlientowText.getText()),
                 Integer.valueOf(GUI.okresCzasuNaplywuText.getText()),
                 Integer.valueOf(GUI.liczbaOkienekText.getText()));
+
+        zakonczSymulacjeCzas =Integer.valueOf(GUI.czasTrwaniaSymulacji.getText());
 
         while( fedamb.isReadyToRun == false )
         {
@@ -241,7 +244,7 @@ public class GuiFederate {
             updateAttributeValues(gui);
         }
 
-        if(zakonczSymulacje){
+        if(zakonczSymulacje || zakonczSymulacjeCzas <= simTime){
             sendInteraction("koniecSymulacji");
             endSim();
         }

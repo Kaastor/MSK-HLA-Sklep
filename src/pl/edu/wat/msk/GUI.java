@@ -24,11 +24,13 @@ public class GUI {
         private JLabel liczbaKlientowLabel;
         private JLabel okresCzasuNaplywuLabel;
         private JLabel liczbaOkienekLabel;
+        private JLabel czasTrwaniaSymulacjiL;
 
         public static JTextField czasObslugiText;
         public static JTextField liczbaKlientowText;
         public static JTextField okresCzasuNaplywuText;
         public static JTextField liczbaOkienekText;
+        public static JTextField czasTrwaniaSymulacji;
 
         private JButton startSymulacjiButton;
         private JButton stopSymulacjiButton;
@@ -60,6 +62,11 @@ public class GUI {
             czasObslugiLabel.setBounds(25,50,200,20);
             czasObslugiLabel.setText("Czas obsługi");
 
+            //Labels
+            czasTrwaniaSymulacjiL = new JLabel();
+            czasTrwaniaSymulacjiL.setBounds(25,250,200,20);
+            czasTrwaniaSymulacjiL.setText("Czas trwania symulacji");
+
             liczbaKlientowLabel = new JLabel();
             liczbaKlientowLabel.setBounds(25,100,200,20);
             liczbaKlientowLabel.setText("Liczba napływających klientów");
@@ -79,6 +86,9 @@ public class GUI {
             liczbaKlientowText = new JTextField();
             liczbaKlientowText.setBounds(250,100,100,20);
 
+            czasTrwaniaSymulacji = new JTextField();
+            czasTrwaniaSymulacji.setBounds(250,250,100,20);
+
             okresCzasuNaplywuText = new JTextField();
             okresCzasuNaplywuText.setBounds(250,150,100,20);
 
@@ -86,63 +96,25 @@ public class GUI {
             liczbaOkienekText.setBounds(250,200,100,20);
 
 
-            //Buttons
-            startSymulacjiButton = new JButton();
-            startSymulacjiButton.setText("Start");
-            startSymulacjiButton.setBounds(150, 250, 100, 30 );
-
             stopSymulacjiButton = new JButton();
             stopSymulacjiButton.setText("Stop");
             stopSymulacjiButton.setBounds(150,300,100,30);
-
-            startSymulacjiButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-//                    czasObslugi = (float) Float.valueOf(czasObslugiText.getText().toString());
-//                    //System.out.println(czasObslugi);
-//                    liczbaNaplywajacychKlientow = Integer.valueOf(liczbaKlientowText.getText().toString());
-//                    //System.out.println(liczbaNaplywajacychKlientow);
-//                    okresCzasuNaplywu = Float.valueOf(okresCzasuNaplywuText.getText().toString());
-//                    //System.out.println(okresCzasuNaplywu);
-//                    liczbaOkienek = Integer.valueOf(liczbaOkienekText.getText().toString());
-//                    System.out.println(liczbaOkienek);
-
-//                    try {
-//                        guiFederate.sendStats(czasObslugi,liczbaNaplywajacychKlientow,okresCzasuNaplywu,liczbaOkienek);
-//                    } catch (hla.rti1516e.exceptions.RTIexception rtIexception) {
-//                        rtIexception.printStackTrace();
-//                    }
-
-                }
-            });
 
             stopSymulacjiButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-//                        guiFederate.sendInteraction("koniecSymulacji");
                         GuiFederate.zakonczSymulacje = true;
-//                        guiFederate.resign(); //zanim wysle juz go nie ma?
-
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
-//                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                 }
             });
 
 
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    try {
-//                        guiFederate.sendInteraction("koniecSymulacji"); // tylko jedno zamykanie -> stop
-//                        guiFederate.advanceTime(1.0);
-//                        guiFederate.resign();
-                    } catch (Exception e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    }
-                    frame.dispose();
+                frame.dispose();
                 }
             });
 
@@ -150,11 +122,13 @@ public class GUI {
             frame.add(liczbaKlientowLabel);
             frame.add(okresCzasuNaplywuLabel);
             frame.add(liczbaOkienekLabel);
+            frame.add(czasTrwaniaSymulacjiL);
 
             frame.add(czasObslugiText);
             frame.add(liczbaKlientowText);
             frame.add(okresCzasuNaplywuText);
             frame.add(liczbaOkienekText);
+            frame.add(czasTrwaniaSymulacji);
 
             frame.add(stopSymulacjiButton);
 
