@@ -76,7 +76,9 @@ public class Okienko {
     public String toString() {
         return "Okienko{" +
                 "id=" + id +
-                ", kolejkaZwykla.size=" + kolejkaZwykla.size() +
+                ", kolZ.L=" + kolejkaZwykla.size() +
+                ", kolU.L=" + kolejkaUprzywilejowana.size() +
+
                 '}';
     }
 }

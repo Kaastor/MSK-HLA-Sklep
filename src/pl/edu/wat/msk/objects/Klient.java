@@ -11,6 +11,7 @@ public class Klient {
     private int priorytet;
     private int obslugiwany;
     private int obsluzony;
+    private int wKolejce;
     private int idKolejki;
     private int czasUtworzenia;
 
@@ -22,6 +23,7 @@ public class Klient {
         this.id = 0;
         this.KlientHandle = null;
         this.czasUtworzenia = czasUtworzenia;
+        this.wKolejce = 0;
         this.obslugiwany = 0;
         this.obsluzony = 0;
         this.idKolejki = simGenerator.uniformInt(1, OkienkoFederate.liczbaOkienek+1);
@@ -90,12 +92,21 @@ public class Klient {
         this.czasUtworzenia = czasUtworzenia;
     }
 
+    public int getwKolejce() {
+        return wKolejce;
+    }
+
+    public void setwKolejce(int wKolejce) {
+        this.wKolejce = wKolejce;
+    }
+
     @Override
     public String toString() {
         return "Klient{" +
                 "id=" + id +
                 ", priorytet =" + priorytet +
                 ", idKolejki=" + idKolejki +
+                ", wKolejce=" + wKolejce +
                 '}';
     }
 }

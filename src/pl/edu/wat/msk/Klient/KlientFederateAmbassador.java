@@ -139,7 +139,7 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
-        int id=0,  idKolejka =0, obsluzony=0, obslugiwany=0, priorytet=0;
+        int id=0,  idKolejka =0, obsluzony=0, obslugiwany=0, priorytet=0, wKolejce = 0;
 
         StringBuilder builder = new StringBuilder( "Reflection for object:" );
         builder.append( " handle=" + theObject );
@@ -193,6 +193,14 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
 
                 priorytet = decodeValue(theAttributes.get(attributeHandle));
             }
+            else if( attributeHandle.equals(klientFederate.wKolejceHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " wKolejceHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                priorytet = decodeValue(theAttributes.get(attributeHandle));
+            }
             else
             {
                 builder.append( attributeHandle );
@@ -204,7 +212,7 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
 
         log( builder.toString() );
 
-        this.klientFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet);
+        this.klientFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet, wKolejce);
    }
 
     @Override

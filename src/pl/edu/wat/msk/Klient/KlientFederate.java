@@ -3,7 +3,6 @@ package pl.edu.wat.msk.Klient;
 
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.EncoderFactory;
-import hla.rti1516e.encoding.HLAboolean;
 import hla.rti1516e.encoding.HLAinteger16BE;
 import hla.rti1516e.exceptions.FederatesCurrentlyJoined;
 import hla.rti1516e.exceptions.FederationExecutionAlreadyExists;
@@ -42,6 +41,7 @@ public class KlientFederate {
     protected AttributeHandle idHandle;
     protected AttributeHandle priorytetHandle;
     protected AttributeHandle obslugiwanyHandle;
+    protected AttributeHandle wKolejceHandle;
     protected AttributeHandle obsluzonyHandle;
     protected AttributeHandle idKolejkiHandle;
 
@@ -110,7 +110,7 @@ public class KlientFederate {
         log("Published and Subscribed");
 
         for (timer = 0; timer < ITERATIONS; timer++) {
-            klientUtylizacja(timer);
+            klientGeneracja(timer);
             log("Advancing...");
             advanceTime(1.0);
             log("Time Advanced to " + fedamb.federateTime);
@@ -139,12 +139,14 @@ public class KlientFederate {
         this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
         this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
         this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+        this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
         AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
         attributes.add(this.idHandle);
         attributes.add(this.priorytetHandle);
         attributes.add(this.obslugiwanyHandle);
         attributes.add(this.obsluzonyHandle);
         attributes.add(this.idKolejkiHandle);
+        attributes.add(this.wKolejceHandle);
         rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
 
         this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
@@ -153,12 +155,14 @@ public class KlientFederate {
         this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
         this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
         this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+        this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
         AttributeHandleSet attributes2 = rtiamb.getAttributeHandleSetFactory().create();
         attributes2.add(this.idHandle);
         attributes2.add(this.priorytetHandle);
         attributes2.add(this.obslugiwanyHandle);
         attributes2.add(this.obsluzonyHandle);
         attributes2.add(this.idKolejkiHandle);
+        attributes2.add(this.wKolejceHandle);
         rtiamb.subscribeObjectClassAttributes(KlientHandle, attributes2);
 
 
@@ -189,6 +193,8 @@ public class KlientFederate {
         attributes.put(obsluzonyHandle, obsluzonyValue.toByteArray());
         HLAinteger16BE obslugiwanyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObslugiwany()));
         attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
+        HLAinteger16BE wKolejceValue = encoderFactory.createHLAinteger16BE((short) (klient.getwKolejce()));
+        attributes.put(obslugiwanyHandle, wKolejceValue.toByteArray());
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
         rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
     }
@@ -214,22 +220,17 @@ public class KlientFederate {
     }
 
 
-    public void klientUtylizacja(int czasSymulacji) throws RTIexception {
-        log(listaKlientow.toString());
+    public void klientGeneracja(int czasSymulacji) throws RTIexception {
         simTime = czasSymulacji;
         Klient klient;
-        for (int i = 0; i < listaKlientow.size(); i++) {
+        for (int i = 0; i < listaKlientow.size(); i++) { //tworzenie klienta
             klient = listaKlientow.get(i);
             if (klient.getCzasUtworzenia() <= czasSymulacji && klient.getKlientHandle() == null) {
                 klient.setKlientHandle(registerObject());
-                System.out.println("1!!");
                 updateAttributeValues(klient);
             }
-            if(czasSymulacji == 50){
-                listaKlientow.get(i).setObsluzony(1);
-                updateAttributeValues(listaKlientow.get(i));
-            }
         }
+        //utylizacja bedzie interakcja
         log(listaKlientow.toString());
     }
 
@@ -241,7 +242,7 @@ public class KlientFederate {
         log("KlientId: " + klient.getId() + " nowy klient wygenerowany.");
     }
 
-    public void rtiUpdateKlient(ObjectInstanceHandle klient, int id, int idKolejka, int obsluzony, int obslugiwany, int priorytet) {
+    public void rtiUpdateKlient(ObjectInstanceHandle klient, int id, int idKolejka, int obsluzony, int obslugiwany, int priorytet, int wKolejce) {
         //update klient jesli taki istnieje w kolejce
         int index = -1;
         for (int i = 0; i < listaKlientow.size(); i++)    //znajdz klienta ktory byl updatowany
@@ -258,6 +259,7 @@ public class KlientFederate {
                 updateklient.setObslugiwany(obslugiwany);
                 updateklient.setObsluzony(obsluzony);
                 updateklient.setPriorytet(priorytet);
+                updateklient.setwKolejce(wKolejce);
             }
         }
     }

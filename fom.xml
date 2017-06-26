@@ -114,6 +114,17 @@
                         transportation="HLAreliable"
                         order="TimeStamp"
                         semantics="NA" />
+                <attribute
+                        name="wKolejce"
+                        dataType="HLAinteger16BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
             </objectClass>
         </objectClass>
     </objects>

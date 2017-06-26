@@ -45,6 +45,7 @@ public class OkienkoFederate {
     protected AttributeHandle obslugiwanyHandle;
     protected AttributeHandle obsluzonyHandle;
     protected AttributeHandle idKolejkiHandle;
+    protected AttributeHandle wKolejceHandle;
 
     LinkedList<Okienko> listaOkienek = new LinkedList<>();
     LinkedList<Klient> listaKlientow = new LinkedList<>();
@@ -145,12 +146,14 @@ public class OkienkoFederate {
         this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
         this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
         this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+        this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
         AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
         attributes.add(this.idHandle);
         attributes.add(this.priorytetHandle);
         attributes.add(this.obslugiwanyHandle);
         attributes.add(this.obsluzonyHandle);
         attributes.add(this.idKolejkiHandle);
+        attributes.add(this.wKolejceHandle);
         rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
 
         this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
@@ -159,12 +162,14 @@ public class OkienkoFederate {
         this.obslugiwanyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obslugiwany");
         this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
         this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
+        this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
         AttributeHandleSet attributes2 = rtiamb.getAttributeHandleSetFactory().create();
         attributes2.add(this.idHandle);
         attributes2.add(this.priorytetHandle);
         attributes2.add(this.obslugiwanyHandle);
         attributes2.add(this.obsluzonyHandle);
         attributes2.add(this.idKolejkiHandle);
+        attributes2.add(this.wKolejceHandle);
         rtiamb.subscribeObjectClassAttributes(KlientHandle, attributes2);
 
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
@@ -192,6 +197,8 @@ public class OkienkoFederate {
         attributes.put(obsluzonyHandle, obsluzonyValue.toByteArray());
         HLAinteger16BE obslugiwanyValue = encoderFactory.createHLAinteger16BE((short) (klient.getObslugiwany()));
         attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
+        HLAinteger16BE wKolejceValue = encoderFactory.createHLAinteger16BE((short) (klient.getwKolejce()));
+        attributes.put(wKolejceHandle, wKolejceValue.toByteArray());
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
         rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
     }
@@ -218,27 +225,38 @@ public class OkienkoFederate {
     }
 
 
-    public void obslugaKlientow(int czasSymulacji) throws RTIexception {
+    public void obslugaKlientow(int czasSymulacji) throws RTIexception, Exception {
         log(listaOkienek.toString());
         log(listaKlientow.toString());
+
+        for(Klient klient : listaKlientow){
+            if(klient.getwKolejce() == 0){
+                dodajDoKolejki(klient);
+            }
+        }
     }
 
     public void rtiNowyKlient(ObjectInstanceHandle klientHandle) throws Exception
     {
         Klient klient= new Klient(klientHandle);
         listaKlientow.add(klient);
-        dodajDoKolejki(klient);
     }
 
-    private void dodajDoKolejki(Klient klient){ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin
+    private void dodajDoKolejki(Klient klient) throws Exception{ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin
         for(Okienko okienko : listaOkienek){
             System.out.println(klient.getIdKolejki() + "!" + okienko.getId());
 
             if(okienko.getId() == klient.getIdKolejki()) {
-                if(klient.getPriorytet() == 1)
+                if(klient.getPriorytet() == 1) {
                     okienko.getKolejkaUprzywilejowana().add(klient);
-                else
+                    klient.setwKolejce(1);
+                    log("Klient " + klient.getId() + " dodany do uprz" + okienko.getKolejkaUprzywilejowana().size());
+                }
+                else {
                     okienko.getKolejkaZwykla().add(klient);
+                    klient.setwKolejce(1);
+                    log("Klient " + klient.getId() + " dodany do zw" + okienko.getKolejkaZwykla().size());
+                }
             }
         }
     }
@@ -251,7 +269,7 @@ public class OkienkoFederate {
         log("OkienkoId: " + okienko.getId() + " nowe okienko wygenerowane.");
     }
 
-    public void rtiUpdateKlient(ObjectInstanceHandle klient, int id, int idKolejka, int obsluzony, int obslugiwany, int priorytet) {
+    public void rtiUpdateKlient(ObjectInstanceHandle klient, int id, int idKolejka, int obsluzony, int obslugiwany, int priorytet,  int wKolejce) {
         //update klient jesli taki istnieje w kolejce
         int index = -1;
         for (int i = 0; i < listaKlientow.size(); i++)    //znajdz klienta ktory byl updatowany
@@ -268,6 +286,7 @@ public class OkienkoFederate {
                 updateklient.setObslugiwany(obslugiwany);
                 updateklient.setObsluzony(obsluzony);
                 updateklient.setPriorytet(priorytet);
+                updateklient.setwKolejce(wKolejce);
             }
         }
     }
