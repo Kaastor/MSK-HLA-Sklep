@@ -1,9 +1,12 @@
 package pl.edu.wat.msk.Sklep;
 
 
+import hla.rti.jlc.EncodingHelpers;
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.DecoderException;
+import hla.rti1516e.encoding.HLAfloat64BE;
 import hla.rti1516e.encoding.HLAinteger16BE;
+import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 
@@ -186,11 +189,28 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
 //        }
 
 
+
+
         if( interactionClass.equals(sklepFederate.koniecSymulacjiHandle) )
         {
             builder.append( " (koniecSymulacjiHandle)" );
             this.sklepFederate.endSim();
         }
+        if(interactionClass.equals(sklepFederate.daneSymulacjiHandle)){
+
+            for( ParameterHandle parameterHandle : theParameters.keySet() )
+            {
+               int czas = (int) decodeValue(theParameters.get(sklepFederate.czasObslugiHandle));
+                System.out.println("TUUUUUUUUU " + czas);
+            }
+
+
+
+
+        }
+
+
+
 
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
 

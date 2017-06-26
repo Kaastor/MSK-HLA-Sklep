@@ -2,10 +2,7 @@ package pl.edu.wat.msk.Okienko;
 
 
 import hla.rti1516e.*;
-import hla.rti1516e.encoding.EncoderFactory;
-import hla.rti1516e.encoding.HLAfixedArray;
-import hla.rti1516e.encoding.HLAinteger16BE;
-import hla.rti1516e.encoding.HLAinteger32BE;
+import hla.rti1516e.encoding.*;
 import hla.rti1516e.exceptions.FederatesCurrentlyJoined;
 import hla.rti1516e.exceptions.FederationExecutionAlreadyExists;
 import hla.rti1516e.exceptions.FederationExecutionDoesNotExist;
@@ -25,6 +22,11 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
+    public int liczbaKlientow = 0;
+    public int liczbaObsluzonych = 0;
+    public int wyslijStaty = 0;
+
+
     public static int liczbaOkienek =2;
     public static int czasObslugi = 20;
     public static int zakonczenieObslugiCzas = 0;
@@ -43,6 +45,10 @@ public class OkienkoFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle klientObsluzonyHandle;
     protected ParameterHandle idObsluzonegoKlientaHandle;
+
+    protected InteractionClassHandle wyslijWynikiHandle;
+    protected ParameterHandle liczbaKlientowHandle;
+    protected ParameterHandle liczbaObsluzonychHandle;
 
     //udostepniane z fom
     protected ObjectClassHandle KlientHandle;
@@ -122,10 +128,14 @@ public class OkienkoFederate {
             rtiNoweOkienko();
 
         for (timer = 0; timer < ITERATIONS; timer++) {
-            simTime = timer;
-            obslugaKlientow();
-            advanceTime(1.0);
+            if (wyslijStaty == 0) {
+                simTime = timer;
+                obslugaKlientow();
+                advanceTime(1.0);
+            }
+            else endSim();
         }
+        sendResults();
         resign();
     }
 
@@ -166,6 +176,12 @@ public class OkienkoFederate {
         klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
         idObsluzonegoKlientaHandle = rtiamb.getParameterHandle(this.klientObsluzonyHandle, "idObsluzonegoKlienta");
         rtiamb.publishInteractionClass(klientObsluzonyHandle);
+
+        wyslijWynikiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.wyslijWyniki");
+        liczbaKlientowHandle = rtiamb.getParameterHandle(this.wyslijWynikiHandle, "liczbaKlientow");
+        liczbaObsluzonychHandle = rtiamb.getParameterHandle(this.wyslijWynikiHandle, "liczbaObsluzonych");
+        rtiamb.publishInteractionClass(wyslijWynikiHandle);
+
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
@@ -190,6 +206,24 @@ public class OkienkoFederate {
         while (fedamb.isConstrained == false) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
+    }
+
+    public void sendResults () throws RTIexception{
+
+        HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + + fedamb.federateLookahead);
+
+        ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(2);
+        HLAfloat64BE klienci = encoderFactory.createHLAfloat64BE( this.liczbaKlientow );
+        HLAinteger32BE obsluzeni = encoderFactory.createHLAinteger32BE( this.liczbaObsluzonych);
+
+        parameters.put(liczbaKlientowHandle, klienci.toByteArray());
+        parameters.put(liczbaObsluzonychHandle, obsluzeni.toByteArray());
+
+        log("sending results");
+
+        rtiamb.sendInteraction(wyslijWynikiHandle, parameters,generateTag(),time);
+
+        endSim();
     }
 
     private byte[] generateTag() {
@@ -233,6 +267,7 @@ public class OkienkoFederate {
                     log("KlientId " + okienko.getObslugiwany().getId() + " (uprzywilejowany) został pobrany do obslugi przez " + okienko.getId());
                     okienko.getObslugiwany().setObslugiwany(1);//do etstow
                     okienko.setWolne(0);
+                    liczbaObsluzonych++;
                     zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
                 }
                 else{
@@ -241,6 +276,7 @@ public class OkienkoFederate {
                         log("KlientId " + okienko.getObslugiwany().getId() + " (zwykly) został pobrany do obslugi przez " + okienko.getId());
                         okienko.getObslugiwany().setObslugiwany(1);
                         okienko.setWolne(0);
+                        liczbaObsluzonych++;
                         zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
                     }
                 }
@@ -263,6 +299,7 @@ public class OkienkoFederate {
     {
         Klient klient= new Klient(klientHandle);
         listaKlientow.add(klient);
+        liczbaKlientow++;
     }
 
     private void dodajDoKolejki(Klient klient) throws Exception{ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin

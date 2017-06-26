@@ -190,6 +190,16 @@
                     order="Receive"
                     semantics="NA">
             </interactionClass>
+            <interactionClass
+                    name="wyslijWyniki"
+                    sharing="PublishSubscribe"
+                    dimensions="NA"
+                    transportation="HLAreliable"
+                    order="Receive"
+                    semantics="NA">
+                <parameter name="liczbaKlientow" dataType="HLAintegerBE" semantics="NA" />
+                <parameter name="liczbaObsluzonych" dataType="HLAinteger32BE" semantics="NA" />
+            </interactionClass>
         </interactionClass>
     </interactions>
 </objectModel>

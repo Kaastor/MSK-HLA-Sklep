@@ -36,7 +36,13 @@ public class SklepFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle generujKlientaHandle;
 
-    public int simTime;
+    protected InteractionClassHandle daneSymulacjiHandle;
+    protected ParameterHandle czasObslugiHandle;
+    protected ParameterHandle liczbaNaplywajacychKlientowHandle;
+    protected ParameterHandle okresCzasuNaplywuHandle;
+    protected ParameterHandle liczbaOkienekHandle;
+
+
     private void log(String message) {
         System.out.println("SklepFederate: " + message);
     }
@@ -100,8 +106,8 @@ public class SklepFederate {
         log("Published and Subscribed");
 
         for (timer = 0; timer < ITERATIONS; timer++) {
-            simTime = timer;
             generujKlientow(timer);
+
             advanceTime(1.0);
         }
         resign();
@@ -129,6 +135,17 @@ public class SklepFederate {
         generujKlientaHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.generujKlienta");
         rtiamb.publishInteractionClass(generujKlientaHandle);
 
+
+        daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
+        rtiamb.subscribeInteractionClass(daneSymulacjiHandle);
+
+        czasObslugiHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "czasObslugi");
+        liczbaNaplywajacychKlientowHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaNaplywajacychKlientow");
+        okresCzasuNaplywuHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "okresCzasuNaplywu");
+        liczbaOkienekHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaOkienek");
+
+
+
     }
 
     private void sendInteraction(String type) throws RTIexception {
@@ -144,6 +161,7 @@ public class SklepFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
+        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);

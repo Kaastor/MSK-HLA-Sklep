@@ -5,6 +5,7 @@ import hla.rti1516e.encoding.DecoderException;
 import hla.rti1516e.encoding.HLAinteger16BE;
 import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederateInternalError;
+import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Time;
 
 public class OkienkoFederateAmbassador extends NullFederateAmbassador
@@ -273,8 +274,9 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
        if( interactionClass.equals(okienkoFederate.koniecSymulacjiHandle) )
         {
             builder.append( " (koniecSymulacji)" );
-            this.okienkoFederate.endSim();
+            okienkoFederate.wyslijStaty = 1;
         }
+
 
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
 

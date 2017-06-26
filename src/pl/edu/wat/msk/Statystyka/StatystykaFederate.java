@@ -44,6 +44,10 @@ public class StatystykaFederate {
         protected ParameterHandle okresCzasuNaplywuHandle;
         protected ParameterHandle liczbaOkienekHandle;
 
+        protected InteractionClassHandle wyslijWynikiHandle;
+        protected ParameterHandle liczbaKlientowHandle;
+        protected ParameterHandle liczbaObsluzonychHandle;
+
 
 
     private void log( String message )
@@ -150,6 +154,11 @@ public class StatystykaFederate {
     {
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
         rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
+
+        wyslijWynikiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.wyslijWyniki" );
+        rtiamb.subscribeInteractionClass(wyslijWynikiHandle);
+        liczbaKlientowHandle = rtiamb.getParameterHandle(wyslijWynikiHandle, "liczbaKlientow");
+        liczbaObsluzonychHandle = rtiamb.getParameterHandle(wyslijWynikiHandle, "liczbaObsluzonych");
     }
 
     public void sendInteraction(String type) throws RTIexception

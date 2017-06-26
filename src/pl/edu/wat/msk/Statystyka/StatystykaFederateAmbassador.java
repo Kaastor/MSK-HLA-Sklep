@@ -191,6 +191,10 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
             this.statystykaFederate.endSim();
 
         }
+        if ( interactionClass.equals(statystykaFederate.wyslijWynikiHandle))
+        {
+            System.out.println("Odebrałem wyniki !!! ");
+        }
 //        if( interactionClass.equals(federate.daneStartowe) )
 //        {
 //            builder.append( " (daneStartowe)" );
