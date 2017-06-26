@@ -184,6 +184,7 @@ public class StatystykaFederateAmbassador  extends NullFederateAmbassador {
 
         if( interactionClass.equals(statystykaFederate.koniecSymulacjiHandle) )
         {
+            System.out.println("GOWNO: ODBIERAM KONIEC SYMULACJI");
             builder.append( " (koniecSymulacjiHandle)" );
             log("odebralem :)");
             this.statystykaFederate.end_sim();

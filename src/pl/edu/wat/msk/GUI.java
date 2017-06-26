@@ -123,12 +123,12 @@ public class GUI {
                         guiFederate.sendInteraction("koniecSymulacji");
                         koniecSymulacji = true;
                         guiFederate.advanceTime(1.0);
-                        guiFederate.resign();
+//                        guiFederate.resign(); //zanim wysle juz go nie ma?
 
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
-                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+//                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                 }
             });
 
@@ -136,7 +136,7 @@ public class GUI {
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     try {
-                        guiFederate.sendInteraction("koniecSymulacji");
+//                        guiFederate.sendInteraction("koniecSymulacji"); // tylko jedno zamykanie -> stop
                         guiFederate.advanceTime(1.0);
                         guiFederate.resign();
                     } catch (Exception e1) {

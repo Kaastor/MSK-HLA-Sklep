@@ -183,13 +183,8 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
 //        {
 //            builder.append( " (daneStartowe)" );
 //            this.federate.rti_otworz_kase(((HLAfloat64Time)time).getValue());
-//        }
-//        else
-//         if( interactionClass.equals(sklepFederate.generujKlienta) )
-//                {
-//                    builder.append( " (generujKlienta)" );
-//                    this.sklepFederate.rti_zamknij_kase();
-//                }
+//        } else
+
 
         if( interactionClass.equals(sklepFederate.koniecSymulacjiHandle) )
         {

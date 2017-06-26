@@ -101,9 +101,8 @@ public class SklepFederate {
 
         for (timer = 0; timer < ITERATIONS; timer++) {
             generujKlientow(timer);
-            log("Advancing...");
+
             advanceTime(1.0);
-            log("Time Advanced to " + fedamb.federateTime);
         }
         resign();
     }
@@ -113,7 +112,7 @@ public class SklepFederate {
         log("Resigned from Federation");
 
         try {
-            rtiamb.destroyFederationExecution("MSKfed");
+            rtiamb.destroyFederationExecution("federation");
             log("Destroyed Federation");
         } catch (FederationExecutionDoesNotExist dne) {
             log("No need to destroy federation, it doesn't exist");
@@ -145,12 +144,14 @@ public class SklepFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
+        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
         while (fedamb.isAdvancing) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
+        log("Time Advanced to " + fedamb.federateTime);
     }
 
     private void enableTimePolicy() throws Exception {

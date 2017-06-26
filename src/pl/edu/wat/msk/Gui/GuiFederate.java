@@ -97,37 +97,10 @@ public class GuiFederate {
         log( "Joined Federation as " + federateName );
 
     }
+
     public void runFederate( String federateName ) throws Exception
     {
-        log( "Creating RTIambassador..." );
-        rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
-        encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
-        log( "Connecting..." );
-        fedamb = new GuiFederateAmbassador( this );
-        rtiamb.connect( fedamb, CallbackModel.HLA_EVOKED );
-        log( "Creating Federation..." );
-        try
-        {
-            URL[] modules = new URL[]{
-                    (new File("fom.xml")).toURI().toURL()
-            };
-
-            rtiamb.createFederationExecution( "federation", modules );
-            log( "Created Federation" );
-        }
-        catch( FederationExecutionAlreadyExists exists )
-        {
-            log( "Didn't create federation, it already existed" );
-        }
-        catch( MalformedURLException urle )
-        {
-            log( "Exception loading one of the FOM modules from disk: " + urle.getMessage() );
-            urle.printStackTrace();
-            return;
-        }
-
-        rtiamb.joinFederationExecution( federateName, "GuiFederate",	"federation" );
-        log( "Joined Federation as " + federateName );
+        createFederation(federateName);
 
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
 
@@ -151,6 +124,7 @@ public class GuiFederate {
         log( "Published and Subscribed" );
 
         GUI.run(this);
+
     }
 
     public void resign() throws Exception{
@@ -159,7 +133,7 @@ public class GuiFederate {
 
         try
         {
-            rtiamb.destroyFederationExecution( "MSKfed" );
+            rtiamb.destroyFederationExecution( "federation" );
             log( "Destroyed Federation" );
         }
         catch( FederationExecutionDoesNotExist dne )
@@ -194,6 +168,7 @@ public class GuiFederate {
 
         if(type.equals("koniecSymulacji"))
         {
+            System.out.println("GOWNO: WYSYLAM KONIEC SYMULACJI");
             log("Wysylam koniecSymulacji");
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
