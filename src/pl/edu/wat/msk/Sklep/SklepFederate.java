@@ -25,7 +25,7 @@ public class SklepFederate {
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
 
-    private int nastepnaGeneracja = 0;
+    private int nastepnaGeneracja = -1;
     private int okresGeneracji = 1;
     private int generowanaLiczbaKlientow = 1;
 
@@ -201,7 +201,7 @@ public class SklepFederate {
         gui.setOkresCzasuNaplywu(okresCzasuNaplywu);
         okresGeneracji = okresCzasuNaplywu;
         generowanaLiczbaKlientow = liczbaNaplywajacychKlientow;
-        nastepnaGeneracja += okresGeneracji;
+        nastepnaGeneracja = 1;
         log("Update: liczbaNaplywajacychKlientow" + liczbaNaplywajacychKlientow + ",  okresCzasuNaplywu: " + okresCzasuNaplywu);
     }
 
