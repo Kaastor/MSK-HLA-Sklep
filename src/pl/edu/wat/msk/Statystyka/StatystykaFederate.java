@@ -50,6 +50,7 @@ public class StatystykaFederate {
 
         public Stats stats;
 
+        public boolean running = true;
 
 
     private void log( String message )
@@ -130,19 +131,18 @@ public class StatystykaFederate {
         log( "Published and Subscribed" );
 
         //stats.run(this);
-        this.stats = new Stats();
+        this.stats = new Stats(this);
 
         for (timer = 0; timer < ITERATIONS; timer++) {
 
             advanceTime(1.0);
         }
 
-
-
-        for (timer = 0; timer < ITERATIONS; timer++) {
-
+        while(running){
             advanceTime(1.0);
         }
+
+        resign();
     }
 
     public void resign() throws Exception{

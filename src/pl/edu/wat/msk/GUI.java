@@ -115,6 +115,8 @@ public class GUI {
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                 frame.dispose();
+                guiFederate.running=false;
+                guiFederate.endSim();
                 }
             });
 
@@ -143,12 +145,21 @@ public class GUI {
             public void run() {
                 try {
                     GUI gui = new GUI(federat);
+                    gui.setInitialData(2,3,5,2);
                     gui.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    private void setInitialData(int czasObslugi, int liczbaNaplywajacychKlientow, int okresCzasuNaplywu, int liczbaOkienek){
+            czasObslugiText.setText(String.valueOf(czasObslugi));
+            liczbaKlientowText.setText(String.valueOf(liczbaNaplywajacychKlientow));
+            okresCzasuNaplywuText.setText(String.valueOf(okresCzasuNaplywu));
+            liczbaOkienekText.setText(String.valueOf(liczbaOkienek));
+
     }
 
 }

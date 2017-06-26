@@ -38,6 +38,8 @@ public class GuiFederate {
     protected AttributeHandle okresCzasuNaplywuHandle;
     protected AttributeHandle liczbaOkienekHandle;
 
+    public boolean running = true;
+
     public Gui gui;
 
     public int simTime;
@@ -136,6 +138,12 @@ public class GuiFederate {
             }
             else endSim();
         }
+
+        sendInteraction("koniecSymulacji");
+        while(running){
+            advanceTime(1.0);
+        }
+
         resign();
     }
 
@@ -213,7 +221,7 @@ public class GuiFederate {
         while( fedamb.isAdvancing ){
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
         }
-        log("Time Advanced to " + fedamb.federateTime);
+        //log("Time Advanced to " + fedamb.federateTime);
     }
 
     private void enableTimePolicy() throws Exception

@@ -5,6 +5,8 @@ import pl.edu.wat.msk.Statystyka.StatystykaFederate;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by Pawel on 2017-06-25.
@@ -38,7 +40,7 @@ public class Stats {
         liczbaObsluzonychText.setText(String.valueOf(liczbaObsluzonych));
         przepustowoscText.setText(String.valueOf((float)((float)liczbaObsluzonych/liczbaKlientow)*100) + "%");
 
-        statystykaFederate.endSim();
+        //statystykaFederate.endSim();
     }
 
     private void init() {
@@ -77,7 +79,22 @@ public class Stats {
         frame.add(liczbaObsluzonychText);
         frame.add(przepustowoscText);
 
+
         frame.setVisible(true);
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                try{
+                    statystykaFederate.running=false;
+                    statystykaFederate.endSim();
+                } catch (NullPointerException ex){
+
+                }
+
+                frame.dispose();
+
+            }
+        });
     }
 
     public static void run(StatystykaFederate federat) {
