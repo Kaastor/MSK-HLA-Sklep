@@ -5,11 +5,8 @@ import hla.rti1516e.encoding.DecoderException;
 import hla.rti1516e.encoding.HLAinteger16BE;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
-import pl.edu.wat.msk.Sklep.SklepFederate;
 
-/**
- * Created by Pawel on 2017-06-26.
- */
+
 public class GuiFederateAmbassador extends NullFederateAmbassador
 {
 
@@ -106,7 +103,6 @@ public class GuiFederateAmbassador extends NullFederateAmbassador
                                         String objectName ) throws FederateInternalError
     {
         log( "Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName );
-        //co jak nowy obj
     }
 
     @Override
@@ -142,7 +138,6 @@ public class GuiFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
-        //na nikogo nie subuje
     }
 
     @Override
@@ -178,29 +173,9 @@ public class GuiFederateAmbassador extends NullFederateAmbassador
                                     SupplementalReceiveInfo receiveInfo )
             throws FederateInternalError
     {
-        //odebranie interakcji od gui o info
         StringBuilder builder = new StringBuilder( "Interaction Received:" );
-
         builder.append( " handle=" + interactionClass );
-//        if( interactionClass.equals(federate.daneStartowe) )
-//        {
-//            builder.append( " (daneStartowe)" );
-//            this.federate.rti_otworz_kase(((HLAfloat64Time)time).getValue());
-//        }
-//        else
-//         if( interactionClass.equals(sklepFederate.generujKlienta) )
-//                {
-//                    builder.append( " (generujKlienta)" );
-//                    this.sklepFederate.rti_zamknij_kase();
-//                }
-//        else if( interactionClass.equals(federate.koniecSymulacjiHandle) )
-//        {
-//            builder.append( " (koniecSymulacjiHandle)" );
-//            this.federate.endSim();
-//        }
-
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
-
         log( builder.toString() );
     }
 }

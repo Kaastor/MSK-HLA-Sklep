@@ -11,6 +11,8 @@ import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Interval;
 import hla.rti1516e.time.HLAfloat64Time;
 import hla.rti1516e.time.HLAfloat64TimeFactory;
+import pl.edu.wat.msk.GUI;
+import pl.edu.wat.msk.objects.Gui;
 import pl.edu.wat.msk.objects.Klient;
 
 import java.io.BufferedReader;
@@ -26,6 +28,7 @@ public class KlientFederate {
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
     public static int maxKlientId = 0;
+    public static int liczbaKolejek = 1;
 
     private int simTime;
     private RTIambassador rtiamb;
@@ -37,7 +40,10 @@ public class KlientFederate {
     protected InteractionClassHandle generujKlientaHandle;
     protected InteractionClassHandle klientObsluzonyHandle;
     protected ParameterHandle idObsluzonegoKlientaHandle;
-    //udostepniane z fom
+
+    protected ObjectClassHandle GuiHandle;
+    protected AttributeHandle liczbaOkienekHandle;
+
     protected ObjectClassHandle KlientHandle;
     protected AttributeHandle idHandle;
     protected AttributeHandle priorytetHandle;
@@ -48,8 +54,10 @@ public class KlientFederate {
 
     LinkedList<Klient> listaKlientow = new LinkedList<>();
 
+    private Gui gui;
+
     private void log(String message) {
-        System.out.println(simTime + " :KlientFederate: " + message);
+        System.out.println(fedamb.federateTime + " :KlientFederate: " + message);
     }
 
     private void waitForUser() {
@@ -64,10 +72,8 @@ public class KlientFederate {
     }
 
     private void createFederation(String federateName) throws Exception {
-        log("Creating RTIambassador...");
         rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
         encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
-        log("Connecting...");
         fedamb = new KlientFederateAmbassador(this);
         rtiamb.connect(fedamb, CallbackModel.HLA_EVOKED);
         log("Creating Federation...");
@@ -99,7 +105,9 @@ public class KlientFederate {
         while (fedamb.isAnnounced == false) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
+
         waitForUser();
+
         rtiamb.synchronizationPointAchieved(READY_TO_RUN);
         log("Achieved sync point: " + READY_TO_RUN + ", waiting for federation...");
         while (fedamb.isReadyToRun == false) {
@@ -133,6 +141,13 @@ public class KlientFederate {
     }
 
     private void publishAndSubscribe() throws RTIexception {
+
+        this.GuiHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Gui");
+        this.liczbaOkienekHandle = rtiamb.getAttributeHandle(this.GuiHandle, "liczbaOkienek");
+        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
+        attributes.add(this.liczbaOkienekHandle);
+        rtiamb.subscribeObjectClassAttributes(GuiHandle, attributes);
+
         this.KlientHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Klient");
         this.idHandle = rtiamb.getAttributeHandle(this.KlientHandle, "id");
         this.priorytetHandle = rtiamb.getAttributeHandle(this.KlientHandle, "priorytet");
@@ -140,14 +155,14 @@ public class KlientFederate {
         this.obsluzonyHandle = rtiamb.getAttributeHandle(this.KlientHandle, "obsluzony");
         this.idKolejkiHandle = rtiamb.getAttributeHandle(this.KlientHandle, "idKolejki");
         this.wKolejceHandle = rtiamb.getAttributeHandle(this.KlientHandle, "wKolejce");
-        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
-        attributes.add(this.idHandle);
-        attributes.add(this.priorytetHandle);
-        attributes.add(this.obslugiwanyHandle);
-        attributes.add(this.obsluzonyHandle);
-        attributes.add(this.idKolejkiHandle);
-        attributes.add(this.wKolejceHandle);
-        rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
+        AttributeHandleSet attributes2 = rtiamb.getAttributeHandleSetFactory().create();
+        attributes2.add(this.idHandle);
+        attributes2.add(this.priorytetHandle);
+        attributes2.add(this.obslugiwanyHandle);
+        attributes2.add(this.obsluzonyHandle);
+        attributes2.add(this.idKolejkiHandle);
+        attributes2.add(this.wKolejceHandle);
+        rtiamb.publishObjectClassAttributes(KlientHandle, attributes2);
 
         klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
         rtiamb.subscribeInteractionClass(klientObsluzonyHandle);
@@ -162,14 +177,12 @@ public class KlientFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-//        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
         while (fedamb.isAdvancing) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
-//        log("Time Advanced to " + fedamb.federateTime);
     }
 
     private void updateAttributeValues(Klient klient) throws RTIexception {
@@ -211,6 +224,17 @@ public class KlientFederate {
         listaKlientow.clear();
     }
 
+    public void rtiNoweGui(ObjectInstanceHandle guiHandle) throws Exception
+    {
+        gui= new Gui(guiHandle);
+    }
+
+    public void rtiUpdateGui(ObjectInstanceHandle klient, int liczbaOkienek) {
+        gui.setLiczbaOkienek(liczbaOkienek);
+        liczbaKolejek = liczbaOkienek;
+        log("Update: liczbaOkienek" + liczbaOkienek );
+    }
+
     public void klientGeneracja() throws RTIexception {
         Klient klient;
         for (int i = 0; i < listaKlientow.size(); i++) { //tworzenie klienta
@@ -220,16 +244,15 @@ public class KlientFederate {
                 updateAttributeValues(klient);
             }
         }
-        //utylizacja bedzie interakcja
         log(listaKlientow.toString());
     }
 
     public void rtiNowyKlient() throws Exception {
-        Klient klient = new Klient(simTime + 1);
+        Klient klient = new Klient(simTime + 1, liczbaKolejek);
         klient.setId(maxKlientId + 1);
         maxKlientId = maxKlientId + 1;
         listaKlientow.add(klient);
-        log("KlientId: " + klient.getId() + " nowy klient wygenerowany.");
+        log("Generacja nowego klienta -" + klient.toString() );
     }
 
     public void utylizacjaKlienta(int idKlienta){

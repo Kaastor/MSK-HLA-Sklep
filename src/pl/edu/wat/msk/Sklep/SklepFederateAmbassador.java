@@ -1,12 +1,9 @@
 package pl.edu.wat.msk.Sklep;
 
 
-import hla.rti.jlc.EncodingHelpers;
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.DecoderException;
-import hla.rti1516e.encoding.HLAfloat64BE;
 import hla.rti1516e.encoding.HLAinteger16BE;
-import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 
@@ -106,7 +103,10 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
                                         String objectName ) throws FederateInternalError
     {
         log( "Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName );
-        //co jak nowy obj
+        try {
+            this.sklepFederate.rtiNoweGui(theObject);
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -142,7 +142,47 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
+        int liczbaNaplywajacychKlientow=0,  okresCzasuNaplywu =0;
 
+        StringBuilder builder = new StringBuilder( "Reflection for object:" );
+        builder.append( " handle=" + theObject );
+        builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+
+        // print the attribute information
+        builder.append( ", attributeCount=" + theAttributes.size() );
+        builder.append( "\n" );
+        for( AttributeHandle attributeHandle : theAttributes.keySet() )
+        {
+            // print the attibute handle
+            builder.append( "\tattributeHandle=" );
+
+            if( attributeHandle.equals(sklepFederate.liczbaNaplywajacychKlientowAttHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " id:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                liczbaNaplywajacychKlientow = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else if( attributeHandle.equals(sklepFederate.okresCzasuNaplywuHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " idKolejkiHandle:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                okresCzasuNaplywu = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else
+            {
+                builder.append( attributeHandle );
+                builder.append( " (Unknown)   " );
+            }
+
+            builder.append( "\n" );
+        }
+
+        log( builder.toString() );
+        this.sklepFederate.rtiUpdateGui(theObject, liczbaNaplywajacychKlientow, okresCzasuNaplywu);
    }
 
     @Override
@@ -178,42 +218,15 @@ public class SklepFederateAmbassador extends NullFederateAmbassador
                                     SupplementalReceiveInfo receiveInfo )
             throws FederateInternalError
     {
-        //odebranie interakcji od gui o info
         StringBuilder builder = new StringBuilder( "Interaction Received:" );
-
         builder.append( " handle=" + interactionClass );
-//        if( interactionClass.equals(federate.daneStartowe) )
-//        {
-//            builder.append( " (daneStartowe)" );
-//            this.federate.rti_otworz_kase(((HLAfloat64Time)time).getValue());
-//        }
-
-
-
-
         if( interactionClass.equals(sklepFederate.koniecSymulacjiHandle) )
         {
             builder.append( " (koniecSymulacjiHandle)" );
             this.sklepFederate.endSim();
         }
-        if(interactionClass.equals(sklepFederate.daneSymulacjiHandle)){
-
-            for( ParameterHandle parameterHandle : theParameters.keySet() )
-            {
-               int czas = (int) decodeValue(theParameters.get(sklepFederate.czasObslugiHandle));
-                System.out.println("TUUUUUUUUU " + czas);
-            }
-
-
-
-
-        }
-
-
-
 
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
-
         log( builder.toString() );
     }
 }

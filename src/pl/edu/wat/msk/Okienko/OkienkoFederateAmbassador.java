@@ -118,12 +118,19 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
                                         ObjectClassHandle theObjectClass,
                                         String objectName ) throws FederateInternalError
     {
-        log( "Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName );
-        try {
-            this.okienkoFederate.rtiNowyKlient(theObject);
+        if(theObjectClass.equals(this.okienkoFederate.KlientHandle)) {
+            log("Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName);
+            try {
+                this.okienkoFederate.rtiNowyKlient(theObject);
+            } catch (Exception e) {
+            }
         }
-        catch (Exception e)
-        {}
+        else if(theObjectClass.equals(this.okienkoFederate.GuiHandle)){
+            try {
+                this.okienkoFederate.rtiNoweGui(theObject);
+            }
+            catch (Exception e) {}
+        }
     }
 
     @Override
@@ -159,79 +166,112 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
     {
-        int id=0,  idKolejka =0, obsluzony=0, obslugiwany=0, priorytet=0, wKolejce = 0;
+        if(!theObject.equals(this.okienkoFederate.getGui().getGuiHandle())) {
+            int id = 0, idKolejka = 0, obsluzony = 0, obslugiwany = 0, priorytet = 0, wKolejce = 0;
 
-        StringBuilder builder = new StringBuilder( "Reflection for object:" );
-        builder.append( " handle=" + theObject );
-        builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+            StringBuilder builder = new StringBuilder("Reflection for object:");
+            builder.append(" handle=" + theObject);
+            builder.append(", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time) time).getValue());
 
-        // print the attribute information
-        builder.append( ", attributeCount=" + theAttributes.size() );
-        builder.append( "\n" );
-        for( AttributeHandle attributeHandle : theAttributes.keySet() )
-        {
-            // print the attibute handle
-            builder.append( "\tattributeHandle=" );
+            // print the attribute information
+            builder.append(", attributeCount=" + theAttributes.size());
+            builder.append("\n");
+            for (AttributeHandle attributeHandle : theAttributes.keySet()) {
+                // print the attibute handle
+                builder.append("\tattributeHandle=");
 
-            if( attributeHandle.equals(okienkoFederate.idHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " id:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                if (attributeHandle.equals(okienkoFederate.idHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" id:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                id = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else if( attributeHandle.equals(okienkoFederate.idKolejkiHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " idKolejkiHandle:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                    id = decodeValue(theAttributes.get(attributeHandle));
+                } else if (attributeHandle.equals(okienkoFederate.idKolejkiHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" idKolejkiHandle:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                idKolejka = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else if( attributeHandle.equals(okienkoFederate.obslugiwanyHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " obslugiwanyHandle:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                    idKolejka = decodeValue(theAttributes.get(attributeHandle));
+                } else if (attributeHandle.equals(okienkoFederate.obslugiwanyHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" obslugiwanyHandle:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                obslugiwany = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else if( attributeHandle.equals(okienkoFederate.obsluzonyHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " obsluzonyHandle:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                    obslugiwany = decodeValue(theAttributes.get(attributeHandle));
+                } else if (attributeHandle.equals(okienkoFederate.obsluzonyHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" obsluzonyHandle:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                obsluzony = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else if( attributeHandle.equals(okienkoFederate.priorytetHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " priorytetHandle:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                    obsluzony = decodeValue(theAttributes.get(attributeHandle));
+                } else if (attributeHandle.equals(okienkoFederate.priorytetHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" priorytetHandle:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                priorytet = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else if( attributeHandle.equals(okienkoFederate.wKolejceHandle) )
-            {
-                builder.append( attributeHandle );
-                builder.append( " wKolejceHandle:" );
-                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+                    priorytet = decodeValue(theAttributes.get(attributeHandle));
+                } else if (attributeHandle.equals(okienkoFederate.wKolejceHandle)) {
+                    builder.append(attributeHandle);
+                    builder.append(" wKolejceHandle:");
+                    builder.append(decodeValue(theAttributes.get(attributeHandle)));
 
-                priorytet = decodeValue(theAttributes.get(attributeHandle));
-            }
-            else
-            {
-                builder.append( attributeHandle );
-                builder.append( " (Unknown)   " );
+                    priorytet = decodeValue(theAttributes.get(attributeHandle));
+                } else {
+                    builder.append(attributeHandle);
+                    builder.append(" (Unknown)   ");
+                }
+
+                builder.append("\n");
             }
 
-            builder.append( "\n" );
+            log(builder.toString());
+            this.okienkoFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet, wKolejce);
         }
+        else {
+            int liczbaOkienek=0,  czasObslugi =0;
 
-        log( builder.toString() );
-        this.okienkoFederate.rtiUpdateKlient(theObject, id, idKolejka, obsluzony, obslugiwany, priorytet, wKolejce);
+            StringBuilder builder = new StringBuilder( "Reflection for object:" );
+            builder.append( " handle=" + theObject );
+            builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+
+            // print the attribute information
+            builder.append( ", attributeCount=" + theAttributes.size() );
+            builder.append( "\n" );
+            for( AttributeHandle attributeHandle : theAttributes.keySet() )
+            {
+                // print the attibute handle
+                builder.append( "\tattributeHandle=" );
+
+                if( attributeHandle.equals(okienkoFederate.liczbaOkienekHandle) )
+                {
+                    builder.append( attributeHandle );
+                    builder.append( " id:" );
+                    builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                    liczbaOkienek = decodeValue(theAttributes.get(attributeHandle));
+                }
+                else if( attributeHandle.equals(okienkoFederate.czasObslugiHandle) )
+                {
+                    builder.append( attributeHandle );
+                    builder.append( " idKolejkiHandle:" );
+                    builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                    czasObslugi = decodeValue(theAttributes.get(attributeHandle));
+                }
+                else
+                {
+                    builder.append( attributeHandle );
+                    builder.append( " (Unknown)   " );
+                }
+
+                builder.append( "\n" );
+            }
+            log( builder.toString() );
+            try {
+                this.okienkoFederate.rtiUpdateGui(theObject, liczbaOkienek, czasObslugi);
+            }
+            catch (Exception e){}
+        }
     }
 
     @Override

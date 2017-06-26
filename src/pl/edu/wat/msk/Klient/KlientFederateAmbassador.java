@@ -117,6 +117,10 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                                         String objectName ) throws FederateInternalError
     {
         log( "Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName );
+        try {
+            this.klientFederate.rtiNoweGui(theObject);
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -151,7 +155,41 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                                         OrderType receivedOrdering,
                                         SupplementalReflectInfo reflectInfo )
             throws FederateInternalError
-    {}
+    {
+        int liczbaOkienek=0;
+
+        StringBuilder builder = new StringBuilder( "Reflection for object:" );
+        builder.append( " handle=" + theObject );
+        builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+
+        // print the attribute information
+        builder.append( ", attributeCount=" + theAttributes.size() );
+        builder.append( "\n" );
+        for( AttributeHandle attributeHandle : theAttributes.keySet() )
+        {
+            // print the attibute handle
+            builder.append( "\tattributeHandle=" );
+
+            if( attributeHandle.equals(klientFederate.liczbaOkienekHandle) )
+            {
+                builder.append( attributeHandle );
+                builder.append( " id:" );
+                builder.append( decodeValue(theAttributes.get(attributeHandle)) );
+
+                liczbaOkienek = decodeValue(theAttributes.get(attributeHandle));
+            }
+            else
+            {
+                builder.append( attributeHandle );
+                builder.append( " (Unknown)   " );
+            }
+
+            builder.append( "\n" );
+        }
+
+        log( builder.toString() );
+        this.klientFederate.rtiUpdateGui(theObject, liczbaOkienek);
+    }
 
     @Override
     public void receiveInteraction( InteractionClassHandle interactionClass,
@@ -188,7 +226,7 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
     {
         //odebranie interakcji od gui o info
         StringBuilder builder = new StringBuilder( "Interaction Received:" );
-
+        int klientId = -1;
         builder.append( " handle=" + interactionClass );
         if( interactionClass.equals(klientFederate.generujKlientaHandle) )
         {
@@ -197,11 +235,14 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                 this.klientFederate.rtiNowyKlient();
             }
             catch (Exception e){}
+            builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
         }
         else if( interactionClass.equals(klientFederate.koniecSymulacjiHandle) )
         {
             builder.append( " (koniecSymulacji)" );
             this.klientFederate.endSim();
+            builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
+            log("Koniec Symulacji -" + builder.toString() );
         }
         else if( interactionClass.equals(klientFederate.klientObsluzonyHandle) )
         {
@@ -213,7 +254,6 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
             for(int i = 0;i < liczbaBajtow ; i++)
                 idObsluzonegoKlienta[i] = klientFederate.encoderFactory.createHLAinteger32BE();
             HLAfixedArray<HLAinteger32BE> values = klientFederate.encoderFactory.createHLAfixedArray(idObsluzonegoKlienta);
-            int klientId = -1;
             try {
                 values.decode( bajty );
                 for( int i = 0 ; i < liczbaBajtow ; ++i )
@@ -222,12 +262,8 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
                     klientId = values.get( i ).getValue();
                 }
             } catch (DecoderException e) { e.printStackTrace();  }
-            log( builder.toString() );
             this.klientFederate.utylizacjaKlienta(klientId);
+            builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
         }
-
-        builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
-
-        log( builder.toString() );
     }
 }

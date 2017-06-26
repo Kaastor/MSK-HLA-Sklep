@@ -1,5 +1,6 @@
 package pl.edu.wat.msk;
 
+import com.sun.corba.se.impl.orbutil.concurrent.Mutex;
 import hla.rti.RTIexception;
 import pl.edu.wat.msk.Gui.GuiFederate;
 
@@ -9,14 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.concurrent.Semaphore;
 
-/**
- * Created by Pawel on 2017-06-25.
- */
+
 public class GUI {
+        //gowno
+        public static boolean start = false;
 
         public static GuiFederate guiFederate;
-
         private JFrame frame;
 
         private JLabel czasObslugiLabel;
@@ -24,10 +25,10 @@ public class GUI {
         private JLabel okresCzasuNaplywuLabel;
         private JLabel liczbaOkienekLabel;
 
-        private JTextField czasObslugiText;
-        private JTextField liczbaKlientowText;
-        private JTextField okresCzasuNaplywuText;
-        private JTextField liczbaOkienekText;
+        public static JTextField czasObslugiText;
+        public static JTextField liczbaKlientowText;
+        public static JTextField okresCzasuNaplywuText;
+        public static JTextField liczbaOkienekText;
 
         private JButton startSymulacjiButton;
         private JButton stopSymulacjiButton;
@@ -39,13 +40,12 @@ public class GUI {
         private boolean koniecSymulacji;
 
 
-        public GUI (GuiFederate federate){
+        public GUI (GuiFederate federate) throws Exception{
             this.guiFederate = federate;
             init();
         }
 
-        private void init(){
-
+        private void init() throws Exception{
             koniecSymulacji = false;
             frame = new JFrame();
             frame.setTitle("GUI");
@@ -98,20 +98,20 @@ public class GUI {
             startSymulacjiButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    czasObslugi = (float) Float.valueOf(czasObslugiText.getText().toString());
-                    //System.out.println(czasObslugi);
-                    liczbaNaplywajacychKlientow = Integer.valueOf(liczbaKlientowText.getText().toString());
-                    //System.out.println(liczbaNaplywajacychKlientow);
-                    okresCzasuNaplywu = Float.valueOf(okresCzasuNaplywuText.getText().toString());
-                    //System.out.println(okresCzasuNaplywu);
-                    liczbaOkienek = Integer.valueOf(liczbaOkienekText.getText().toString());
-                    //System.out.println(liczbaOkienek);
+//                    czasObslugi = (float) Float.valueOf(czasObslugiText.getText().toString());
+//                    //System.out.println(czasObslugi);
+//                    liczbaNaplywajacychKlientow = Integer.valueOf(liczbaKlientowText.getText().toString());
+//                    //System.out.println(liczbaNaplywajacychKlientow);
+//                    okresCzasuNaplywu = Float.valueOf(okresCzasuNaplywuText.getText().toString());
+//                    //System.out.println(okresCzasuNaplywu);
+//                    liczbaOkienek = Integer.valueOf(liczbaOkienekText.getText().toString());
+//                    System.out.println(liczbaOkienek);
 
-                    try {
-                        guiFederate.sendStats(czasObslugi,liczbaNaplywajacychKlientow,okresCzasuNaplywu,liczbaOkienek);
-                    } catch (hla.rti1516e.exceptions.RTIexception rtIexception) {
-                        rtIexception.printStackTrace();
-                    }
+//                    try {
+//                        guiFederate.sendStats(czasObslugi,liczbaNaplywajacychKlientow,okresCzasuNaplywu,liczbaOkienek);
+//                    } catch (hla.rti1516e.exceptions.RTIexception rtIexception) {
+//                        rtIexception.printStackTrace();
+//                    }
 
                 }
             });
@@ -156,7 +156,6 @@ public class GUI {
             frame.add(okresCzasuNaplywuText);
             frame.add(liczbaOkienekText);
 
-            frame.add(startSymulacjiButton);
             frame.add(stopSymulacjiButton);
 
             frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

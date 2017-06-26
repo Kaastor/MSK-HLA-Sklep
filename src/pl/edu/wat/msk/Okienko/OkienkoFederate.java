@@ -10,6 +10,8 @@ import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Interval;
 import hla.rti1516e.time.HLAfloat64Time;
 import hla.rti1516e.time.HLAfloat64TimeFactory;
+import pl.edu.wat.msk.GUI;
+import pl.edu.wat.msk.objects.Gui;
 import pl.edu.wat.msk.objects.Klient;
 import pl.edu.wat.msk.objects.Okienko;
 
@@ -22,19 +24,21 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
+    public static int liczbaOkienekKlient =2;
+    public static int liczbaOkienek =0;
+    public int czasObslugi = 1;
+    public int zakonczenieObslugiCzas = 0;
+
     public int liczbaKlientow = 0;
     public int liczbaObsluzonych = 0;
     public int wyslijStaty = 0;
 
 
-    public static int liczbaOkienek =2;
-    public static int czasObslugi = 20;
-    public static int zakonczenieObslugiCzas = 0;
-
     public static final int ITERATIONS = 1000000;
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
     public static int maxOkienkoId = 0;
+    private boolean utworzOkienka = false;
 
     private int simTime;
     private RTIambassador rtiamb;
@@ -45,6 +49,10 @@ public class OkienkoFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle klientObsluzonyHandle;
     protected ParameterHandle idObsluzonegoKlientaHandle;
+
+    protected ObjectClassHandle GuiHandle;
+    protected AttributeHandle liczbaOkienekHandle;
+    protected AttributeHandle czasObslugiHandle;
 
     protected InteractionClassHandle wyslijWynikiHandle;
     protected ParameterHandle liczbaKlientowHandle;
@@ -61,6 +69,11 @@ public class OkienkoFederate {
 
     LinkedList<Okienko> listaOkienek = new LinkedList<>();
     LinkedList<Klient> listaKlientow = new LinkedList<>();
+    private Gui gui;
+
+    public Gui getGui() {
+        return gui;
+    }
 
     private void log(String message) {
         System.out.println(simTime + " :OkienkoFederate: " + message);
@@ -113,7 +126,9 @@ public class OkienkoFederate {
         while (fedamb.isAnnounced == false) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
+
         waitForUser();
+
         rtiamb.synchronizationPointAchieved(READY_TO_RUN);
         log("Achieved sync point: " + READY_TO_RUN + ", waiting for federation...");
         while (fedamb.isReadyToRun == false) {
@@ -124,8 +139,8 @@ public class OkienkoFederate {
         publishAndSubscribe();
         log("Published and Subscribed");
 
-        for (int i = 0  ; i < liczbaOkienek ; i++)
-            rtiNoweOkienko();
+//        for (int i = 0  ; i < liczbaOkienek ; i++)
+//            rtiNoweOkienko();
 
         for (timer = 0; timer < ITERATIONS; timer++) {
             if (wyslijStaty == 0) {
@@ -170,6 +185,15 @@ public class OkienkoFederate {
         attributes2.add(this.wKolejceHandle);
         rtiamb.subscribeObjectClassAttributes(KlientHandle, attributes2);
 
+        this.GuiHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Gui");
+        this.czasObslugiHandle = rtiamb.getAttributeHandle(this.GuiHandle, "czasObslugi");
+        this.liczbaOkienekHandle = rtiamb.getAttributeHandle(this.GuiHandle, "liczbaOkienek");
+
+        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
+        attributes.add(this.czasObslugiHandle);
+        attributes.add(this.liczbaOkienekHandle);
+        rtiamb.subscribeObjectClassAttributes(GuiHandle, attributes);
+
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
         rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
 
@@ -185,16 +209,29 @@ public class OkienkoFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-//        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
         while (fedamb.isAdvancing) {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
-//        log("Time Advanced to " + fedamb.federateTime);
     }
 
+    public void rtiNoweGui(ObjectInstanceHandle guiHandle) throws Exception
+    {
+        gui= new Gui(guiHandle);
+    }
+
+    public void rtiUpdateGui(ObjectInstanceHandle klient, int liczbaOkienek, int czasObslugi) throws Exception{
+        gui.setLiczbaOkienek(liczbaOkienek);
+        gui.setCzasObslugi(czasObslugi);
+        this.liczbaOkienek = liczbaOkienek;
+        this.czasObslugi = czasObslugi;
+        this.utworzOkienka = true;
+        for (int i = 0  ; i < liczbaOkienek ; i++)
+            rtiNoweOkienko();
+        log("Update: liczbaOkienek" + liczbaOkienek + ",  czasObslugi: " + czasObslugi);
+    }
 
     private void enableTimePolicy() throws Exception {
         HLAfloat64Interval lookahead = timeFactory.makeInterval(fedamb.federateLookahead);
@@ -254,6 +291,7 @@ public class OkienkoFederate {
     public void obslugaKlientow() throws Exception {
         log(listaOkienek.toString());
         log(listaKlientow.toString());
+
         for(Klient klient : listaKlientow){
             if(klient.getwKolejce() == 0){
                 dodajDoKolejki(klient);

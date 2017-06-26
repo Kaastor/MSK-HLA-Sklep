@@ -10,6 +10,7 @@ import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Interval;
 import hla.rti1516e.time.HLAfloat64Time;
 import hla.rti1516e.time.HLAfloat64TimeFactory;
+import pl.edu.wat.msk.objects.Gui;
 
 
 import java.io.BufferedReader;
@@ -25,7 +26,7 @@ public class SklepFederate {
     public static int timer;
 
     private int nastepnaGeneracja = 0;
-    private int okresGeneracji = 10;
+    private int okresGeneracji = 1;
     private int generowanaLiczbaKlientow = 1;
 
     private RTIambassador rtiamb;
@@ -36,15 +37,16 @@ public class SklepFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle generujKlientaHandle;
 
-    protected InteractionClassHandle daneSymulacjiHandle;
-    protected ParameterHandle czasObslugiHandle;
-    protected ParameterHandle liczbaNaplywajacychKlientowHandle;
-    protected ParameterHandle okresCzasuNaplywuHandle;
-    protected ParameterHandle liczbaOkienekHandle;
+    protected ObjectClassHandle GuiHandle;
+    protected AttributeHandle liczbaNaplywajacychKlientowAttHandle;
+    protected AttributeHandle okresCzasuNaplywuHandle;
 
+    public int simTime;
+
+    private Gui gui;
 
     private void log(String message) {
-        System.out.println("SklepFederate: " + message);
+        System.out.println(fedamb.federateTime + " SklepFederate: " + message);
     }
 
     private void waitForUser() {
@@ -59,10 +61,8 @@ public class SklepFederate {
     }
 
     private void createFederation(String federateName) throws Exception {
-        log("Creating RTIambassador...");
         rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
         encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
-        log("Connecting...");
         fedamb = new SklepFederateAmbassador(this);
         rtiamb.connect(fedamb, CallbackModel.HLA_EVOKED);
         log("Creating Federation...");
@@ -95,6 +95,7 @@ public class SklepFederate {
             rtiamb.evokeMultipleCallbacks(0.1, 0.2);
         }
         waitForUser();
+
         rtiamb.synchronizationPointAchieved(READY_TO_RUN);
         log("Achieved sync point: " + READY_TO_RUN + ", waiting for federation...");
         while (fedamb.isReadyToRun == false) {
@@ -105,10 +106,12 @@ public class SklepFederate {
         publishAndSubscribe();
         log("Published and Subscribed");
 
-        for (timer = 0; timer < ITERATIONS; timer++) {
-            generujKlientow(timer);
+        //musi wiedziec o istnieniu obiektu/interakcji
 
-            advanceTime(1.0);
+        for (timer = 0; timer < ITERATIONS; timer++) {
+                simTime = timer;
+                generujKlientow(timer);
+                advanceTime(1.0);
         }
         resign();
     }
@@ -135,16 +138,14 @@ public class SklepFederate {
         generujKlientaHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.generujKlienta");
         rtiamb.publishInteractionClass(generujKlientaHandle);
 
+        this.GuiHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Gui");
+        this.liczbaNaplywajacychKlientowAttHandle = rtiamb.getAttributeHandle(this.GuiHandle, "liczbaNaplywajacychKlientow");
+        this.okresCzasuNaplywuHandle = rtiamb.getAttributeHandle(this.GuiHandle, "okresCzasuNaplywu");
 
-        daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
-        rtiamb.subscribeInteractionClass(daneSymulacjiHandle);
-
-        czasObslugiHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "czasObslugi");
-        liczbaNaplywajacychKlientowHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaNaplywajacychKlientow");
-        okresCzasuNaplywuHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "okresCzasuNaplywu");
-        liczbaOkienekHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaOkienek");
-
-
+        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
+        attributes.add(this.liczbaNaplywajacychKlientowAttHandle);
+        attributes.add(this.okresCzasuNaplywuHandle);
+        rtiamb.subscribeObjectClassAttributes(GuiHandle, attributes);
 
     }
 
@@ -161,7 +162,6 @@ public class SklepFederate {
     }
 
     private void advanceTime(double timeStep) throws RTIexception {
-        log("Advancing...");
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + timeStep);
         rtiamb.timeAdvanceRequest(time);
@@ -191,6 +191,19 @@ public class SklepFederate {
         timer = ITERATIONS;
     }
 
+    public void rtiNoweGui(ObjectInstanceHandle guiHandle) throws Exception
+    {
+        gui= new Gui(guiHandle);
+    }
+
+    public void rtiUpdateGui(ObjectInstanceHandle klient, int liczbaNaplywajacychKlientow, int okresCzasuNaplywu) {
+        gui.setLiczbaNaplywajacychKlientow(liczbaNaplywajacychKlientow);
+        gui.setOkresCzasuNaplywu(okresCzasuNaplywu);
+        okresGeneracji = okresCzasuNaplywu;
+        generowanaLiczbaKlientow = liczbaNaplywajacychKlientow;
+        nastepnaGeneracja += okresGeneracji;
+        log("Update: liczbaNaplywajacychKlientow" + liczbaNaplywajacychKlientow + ",  okresCzasuNaplywu: " + okresCzasuNaplywu);
+    }
 
     public void generujKlientow(int czasSymulacji) throws RTIexception {
         if (nastepnaGeneracja == czasSymulacji) {

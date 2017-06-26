@@ -2,9 +2,7 @@ package pl.edu.wat.msk.Gui;
 
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.EncoderFactory;
-import hla.rti1516e.encoding.HLAfloat32BE;
-import hla.rti1516e.encoding.HLAfloat64BE;
-import hla.rti1516e.encoding.HLAinteger32BE;
+import hla.rti1516e.encoding.HLAinteger16BE;
 import hla.rti1516e.exceptions.FederatesCurrentlyJoined;
 import hla.rti1516e.exceptions.FederationExecutionAlreadyExists;
 import hla.rti1516e.exceptions.FederationExecutionDoesNotExist;
@@ -13,8 +11,7 @@ import hla.rti1516e.time.HLAfloat64Interval;
 import hla.rti1516e.time.HLAfloat64Time;
 import hla.rti1516e.time.HLAfloat64TimeFactory;
 import pl.edu.wat.msk.GUI;
-import pl.edu.wat.msk.Sklep.SklepFederate;
-import pl.edu.wat.msk.Sklep.SklepFederateAmbassador;
+import pl.edu.wat.msk.objects.Gui;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,14 +19,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Pawel on 2017-06-26.
- */
 public class GuiFederate {
     public static final int ITERATIONS = 1000000;
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
-
+    public static boolean start;
     private RTIambassador rtiamb;
     private GuiFederateAmbassador fedamb;
     private HLAfloat64TimeFactory timeFactory;
@@ -37,18 +31,20 @@ public class GuiFederate {
 
     protected InteractionClassHandle koniecSymulacjiHandle;
 
-    protected InteractionClassHandle daneSymulacjiHandle;
-    protected ParameterHandle czasObslugiHandle;
-    protected ParameterHandle liczbaNaplywajacychKlientowHandle;
-    protected ParameterHandle okresCzasuNaplywuHandle;
-    protected ParameterHandle liczbaOkienekHandle;
+    protected ObjectClassHandle GuiHandle;
+    protected AttributeHandle czasObslugiHandle;
+    protected AttributeHandle liczbaNaplywajacychKlientowHandle;
+    protected AttributeHandle okresCzasuNaplywuHandle;
+    protected AttributeHandle liczbaOkienekHandle;
+
+    public Gui gui;
 
     public int simTime;
     public static boolean zakonczSymulacje = false;
 
     private void log( String message )
     {
-        System.out.println( simTime + " GuiFederate: " + message );
+        System.out.println( fedamb.federateTime + " GuiFederate: " + message );
     }
 
     private void waitForUser()
@@ -67,10 +63,8 @@ public class GuiFederate {
     }
 
     private void createFederation(String federateName) throws Exception{
-        log( "Creating RTIambassador..." );
         rtiamb = RtiFactoryFactory.getRtiFactory().getRtiAmbassador();
         encoderFactory = RtiFactoryFactory.getRtiFactory().getEncoderFactory();
-        log( "Connecting..." );
         fedamb = new GuiFederateAmbassador( this );
         rtiamb.connect( fedamb, CallbackModel.HLA_EVOKED );
         log( "Creating Federation..." );
@@ -102,33 +96,39 @@ public class GuiFederate {
     public void runFederate( String federateName ) throws Exception
     {
         createFederation(federateName);
-
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
-
         rtiamb.registerFederationSynchronizationPoint( READY_TO_RUN, null );
         while( fedamb.isAnnounced == false )
         {
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
         }
+
+        GUI.run(this);
+
         waitForUser();
+
         rtiamb.synchronizationPointAchieved( READY_TO_RUN );
         log( "Achieved sync point: " + READY_TO_RUN + ", waiting for federation..." );
+
+        gui = new Gui(Integer.valueOf(GUI.czasObslugiText.getText()),
+                Integer.valueOf(GUI.liczbaKlientowText.getText()),
+                Integer.valueOf(GUI.okresCzasuNaplywuText.getText()),
+                Integer.valueOf(GUI.liczbaOkienekText.getText()));
+
         while( fedamb.isReadyToRun == false )
         {
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
         }
+
         enableTimePolicy();
         log( "Time Policy Enabled" );
-        //////////////////////////////////////////////////////////////////////////////
-
         publishAndSubscribe();
         log( "Published and Subscribed" );
 
-        GUI.run(this);
         for (timer = 0; timer < ITERATIONS; timer++) {
-            simTime = timer;
-            koniecSymulacji();
-            advanceTime(1.0);
+                simTime = timer;
+                symulacja();
+                advanceTime(1.0);
         }
         resign();
     }
@@ -154,62 +154,60 @@ public class GuiFederate {
 
     private void publishAndSubscribe() throws RTIexception
     {
+        this.GuiHandle = rtiamb.getObjectClassHandle("HLAobjectRoot.Gui");
+        this.czasObslugiHandle = rtiamb.getAttributeHandle(this.GuiHandle, "czasObslugi");
+        this.liczbaNaplywajacychKlientowHandle = rtiamb.getAttributeHandle(this.GuiHandle, "liczbaNaplywajacychKlientow");
+        this.okresCzasuNaplywuHandle = rtiamb.getAttributeHandle(this.GuiHandle, "okresCzasuNaplywu");
+        this.liczbaOkienekHandle = rtiamb.getAttributeHandle(this.GuiHandle, "liczbaOkienek");
+
+        AttributeHandleSet attributes = rtiamb.getAttributeHandleSetFactory().create();
+        attributes.add(this.czasObslugiHandle);
+        attributes.add(this.liczbaNaplywajacychKlientowHandle);
+        attributes.add(this.okresCzasuNaplywuHandle);
+        attributes.add(this.liczbaOkienekHandle);
+        rtiamb.publishObjectClassAttributes(GuiHandle, attributes);
+
         this.koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
         rtiamb.publishInteractionClass(koniecSymulacjiHandle);
-
-        this.daneSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.daneSymulacji");
-        rtiamb.publishInteractionClass(daneSymulacjiHandle);
-
-        czasObslugiHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "czasObslugi");
-        liczbaNaplywajacychKlientowHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaNaplywajacychKlientow");
-        okresCzasuNaplywuHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "okresCzasuNaplywu");
-        liczbaOkienekHandle = rtiamb.getParameterHandle(this.daneSymulacjiHandle, "liczbaOkienek");
-
 
     }
 
     public void sendInteraction(String type) throws RTIexception
     {
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
-
         if(type.equals("koniecSymulacji"))
         {
-            log("Wysylam koniecSymulacji");
+            log("Wysylam symulacja");
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
         }
     }
 
-    public void sendStats (float czas, int naplywajacy, float okres, int okienka) throws RTIexception{
-        HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
+    private void updateAttributeValues(Gui gui) throws RTIexception {
+        AttributeHandleValueMap attributes = rtiamb.getAttributeHandleValueMapFactory().create(1);
+        HLAinteger16BE czasObslugiValue = encoderFactory.createHLAinteger16BE((short) (gui.getCzasObslugi()));
+        attributes.put(czasObslugiHandle, czasObslugiValue.toByteArray());
+        HLAinteger16BE liczbaNaplywajacychKlientowValue = encoderFactory.createHLAinteger16BE((short) (gui.getLiczbaNaplywajacychKlientow()));
+        attributes.put(liczbaNaplywajacychKlientowHandle, liczbaNaplywajacychKlientowValue.toByteArray());
+        HLAinteger16BE liczbaOkienekValue = encoderFactory.createHLAinteger16BE((short) (gui.getLiczbaOkienek()));
+        attributes.put(liczbaOkienekHandle, liczbaOkienekValue.toByteArray());
+        HLAinteger16BE okresCzasuNaplywuValue = encoderFactory.createHLAinteger16BE((short) (gui.getOkresCzasuNaplywu()));
+        attributes.put(okresCzasuNaplywuHandle, okresCzasuNaplywuValue.toByteArray());
 
-            ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(4);
-            HLAfloat64BE czasObslugi = encoderFactory.createHLAfloat64BE( czas );
-            HLAinteger32BE liczbaNaplywajacych = encoderFactory.createHLAinteger32BE( naplywajacy);
-            HLAfloat64BE okresCzasuNaplywu = encoderFactory.createHLAfloat64BE( okres);
-            HLAinteger32BE liczbaOkienek = encoderFactory.createHLAinteger32BE( okienka);
-
-        parameters.put(czasObslugiHandle, czasObslugi.toByteArray());
-        parameters.put(liczbaNaplywajacychKlientowHandle, liczbaNaplywajacych.toByteArray());
-        parameters.put(okresCzasuNaplywuHandle, okresCzasuNaplywu.toByteArray());
-        parameters.put(liczbaOkienekHandle, liczbaOkienek.toByteArray());
-
-        log("sending configuration");
-
-        rtiamb.sendInteraction(daneSymulacjiHandle, parameters,generateTag(),time);
+        HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
+        log("Nowe wartosci GUI.");
+        rtiamb.updateAttributeValues(gui.getGuiHandle(), attributes, generateTag(), time);
     }
 
     public void advanceTime( double timeStep ) throws RTIexception
     {
-        log("SimTime: " + fedamb.federateTime);
         fedamb.isAdvancing = true;
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + timeStep );
         rtiamb.timeAdvanceRequest( time );
-
-        while( fedamb.isAdvancing )
-        {
+        while( fedamb.isAdvancing ){
             rtiamb.evokeMultipleCallbacks( 0.1, 0.2 );
         }
+        log("Time Advanced to " + fedamb.federateTime);
     }
 
     private void enableTimePolicy() throws Exception
@@ -237,11 +235,20 @@ public class GuiFederate {
         timer = ITERATIONS;
     }
 
-    private void koniecSymulacji() throws Exception{
+    private void symulacja() throws Exception{
+        if (gui.getCzasUtworzenia() <= simTime && gui.getGuiHandle() == null) {
+            gui.setGuiHandle(registerObject());
+            updateAttributeValues(gui);
+        }
+
         if(zakonczSymulacje){
             sendInteraction("koniecSymulacji");
             endSim();
         }
+    }
+
+    private ObjectInstanceHandle registerObject() throws RTIexception {
+        return rtiamb.registerObjectInstance(GuiHandle);
     }
 
     public static void main( String[] args )

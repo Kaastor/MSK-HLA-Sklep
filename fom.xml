@@ -126,6 +126,55 @@
                         order="TimeStamp"
                         semantics="NA" />
             </objectClass>
+            <objectClass
+                    name="Gui"
+                    sharing="PublishSubscribe"
+                    semantics="NA">
+                <attribute
+                        name="czasObslugi"
+                        dataType="HLAinteger16BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="liczbaNaplywajacychKlientow"
+                        dataType="HLAinteger16BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="okresCzasuNaplywu"
+                        dataType="HLAinteger16BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+                <attribute
+                        name="liczbaOkienek"
+                        dataType="HLAinteger16BE"
+                        updateType="Conditional"
+                        updateCondition="NA"
+                        ownership="NoTransfer"
+                        sharing="PublishSubscribe"
+                        dimensions="NA"
+                        transportation="HLAreliable"
+                        order="TimeStamp"
+                        semantics="NA" />
+            </objectClass>
         </objectClass>
     </objects>
     <interactions>
@@ -184,6 +233,14 @@
             </interactionClass>
             <interactionClass
                     name="generujKlienta"
+                    sharing="PublishSubscribe"
+                    dimensions="NA"
+                    transportation="HLAreliable"
+                    order="Receive"
+                    semantics="NA">
+            </interactionClass>
+            <interactionClass
+                    name="startSymulacji"
                     sharing="PublishSubscribe"
                     dimensions="NA"
                     transportation="HLAreliable"
