@@ -25,7 +25,7 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
-    public static int liczbaOkienek =1;
+    public static int liczbaOkienek =2;
     public static int czasObslugi = 20;
     public static int zakonczenieObslugiCzas = 0;
 
@@ -162,7 +162,7 @@ public class OkienkoFederate {
         rtiamb.subscribeObjectClassAttributes(KlientHandle, attributes2);
 
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
-        rtiamb.publishInteractionClass(koniecSymulacjiHandle);
+        rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
 
         klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
         idObsluzonegoKlientaHandle = rtiamb.getParameterHandle(this.klientObsluzonyHandle, "idObsluzonegoKlienta");
@@ -229,7 +229,7 @@ public class OkienkoFederate {
             if(okienko.getWolne() == 1){//pobierz kogos do obslugi jak jest
                 okienko.setObslugiwany( okienko.getKolejkaUprzywilejowana().poll() );
                 if(okienko.getObslugiwany() != null){
-                    log("KlientId " + okienko.getObslugiwany().getId() + " (uprzywilejowany) został pobrany do obslugi");
+                    log("KlientId " + okienko.getObslugiwany().getId() + " (uprzywilejowany) został pobrany do obslugi przez " + okienko.getId());
                     okienko.getObslugiwany().setObslugiwany(1);//do etstow
                     okienko.setWolne(0);
                     zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
@@ -237,7 +237,7 @@ public class OkienkoFederate {
                 else{
                     okienko.setObslugiwany( okienko.getKolejkaZwykla().poll() );
                     if(okienko.getObslugiwany() != null){
-                        log("KlientId " + okienko.getObslugiwany().getId() + " (zwykly) został pobrany do obslugi");
+                        log("KlientId " + okienko.getObslugiwany().getId() + " (zwykly) został pobrany do obslugi przez " + okienko.getId());
                         okienko.getObslugiwany().setObslugiwany(1);
                         okienko.setWolne(0);
                         zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
@@ -270,12 +270,12 @@ public class OkienkoFederate {
                 if(klient.getPriorytet() == 1) {
                     okienko.getKolejkaUprzywilejowana().add(klient);
                     klient.setwKolejce(1);
-                    log("Klient " + klient.getId() + " dodany do uprzywilejowanej o Id"+ okienko.getId());
+                    log("Klient " + klient.getId() + " dodany do uprzywilejowanej o Id: "+ okienko.getId());
                 }
                 else {
                     okienko.getKolejkaZwykla().add(klient);
                     klient.setwKolejce(1);
-                    log("Klient " + klient.getId() + " dodany do zwyklej o Id" + okienko.getId());
+                    log("Klient " + klient.getId() + " dodany do zwyklej o Id: " + okienko.getId());
                 }
             }
         }

@@ -240,6 +240,7 @@ public class KlientFederate {
             }
         }
         log("Utylizacja klienta: " + idKlienta);
+
     }
 
     private ObjectInstanceHandle registerObject() throws RTIexception {
