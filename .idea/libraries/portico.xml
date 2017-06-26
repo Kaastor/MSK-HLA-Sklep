@@ -2,6 +2,7 @@
   <library name="portico">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../MSK/hla13-src/portico.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DisSimLab2015.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -24,6 +24,7 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
+    public static int liczbaOkienek =2;
     public static final int ITERATIONS = 1000000;
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
@@ -110,7 +111,8 @@ public class OkienkoFederate {
         publishAndSubscribe();
         log("Published and Subscribed");
 
-        rtiNoweOkienko();rtiNoweOkienko();/////////////////
+        for (int i = 0  ; i < liczbaOkienek ; i++)
+            rtiNoweOkienko();
 
         for (timer = 0; timer < ITERATIONS; timer++) {
             obslugaKlientow(timer);
@@ -192,8 +194,8 @@ public class OkienkoFederate {
         attributes.put(obslugiwanyHandle, obslugiwanyValue.toByteArray());
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
         rtiamb.updateAttributeValues(klient.getKlientHandle(), attributes, generateTag(), time);
-
     }
+
 
     private void enableTimePolicy() throws Exception {
         HLAfloat64Interval lookahead = timeFactory.makeInterval(fedamb.federateLookahead);
@@ -218,19 +220,21 @@ public class OkienkoFederate {
 
     public void obslugaKlientow(int czasSymulacji) throws RTIexception {
         log(listaOkienek.toString());
+        log(listaKlientow.toString());
     }
 
-    public void rtiNowyKlient(ObjectInstanceHandle klientHandle)
+    public void rtiNowyKlient(ObjectInstanceHandle klientHandle) throws Exception
     {
         Klient klient= new Klient(klientHandle);
-//        listaKlientow.add(klient); //dodaj nowego klienta jak go oglosza
+        listaKlientow.add(klient);
         dodajDoKolejki(klient);
     }
 
-    private void dodajDoKolejki(Klient klient){
+    private void dodajDoKolejki(Klient klient){ //stad sie nie da, trzeba z glownej petli, zrobic jak marcin
         for(Okienko okienko : listaOkienek){
+            System.out.println(klient.getIdKolejki() + "!" + okienko.getId());
+
             if(okienko.getId() == klient.getIdKolejki()) {
-                System.out.println(klient.getIdKolejki() + " !!!!!!");
                 if(klient.getPriorytet() == 1)
                     okienko.getKolejkaUprzywilejowana().add(klient);
                 else

@@ -102,7 +102,11 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
                                         String objectName ) throws FederateInternalError
     {
         log( "Discoverd Object: handle=" + theObject + ", classHandle=" + theObjectClass + ", name=" + objectName );
-        this.okienkoFederate.rtiNowyKlient(theObject);
+        try {
+            this.okienkoFederate.rtiNowyKlient(theObject);
+        }
+        catch (Exception e)
+        {}
     }
 
     @Override

@@ -1,7 +1,9 @@
 package pl.edu.wat.msk.objects;
 
 
+import dissimlab.random.SimGenerator;
 import hla.rti1516e.ObjectInstanceHandle;
+import pl.edu.wat.msk.Okienko.OkienkoFederate;
 
 public class Klient {
 
@@ -15,23 +17,21 @@ public class Klient {
     private ObjectInstanceHandle KlientHandle;
 
     //kontruktor dla klienta
-    public Klient(int czasUtworzenia)
-    {
+    public Klient(int czasUtworzenia) {
+        SimGenerator simGenerator = new SimGenerator();
         this.id = 0;
         this.KlientHandle = null;
         this.czasUtworzenia = czasUtworzenia;
-        this.priorytet = 0;
         this.obslugiwany = 0;
         this.obsluzony = 0;
-        this.idKolejki = 1;
+        this.idKolejki = simGenerator.uniformInt(1, OkienkoFederate.liczbaOkienek+1);
+        this.priorytet = simGenerator.uniformInt(0, 2);
     }
-
     //konstruktor dla odbiorcy(subskrybującego)
     public Klient(ObjectInstanceHandle KlientHandle)
     {
         this.KlientHandle = KlientHandle;
-        this.idKolejki = 1;
-        this.priorytet = 0;
+        //tutaj wybor wartosci + update
     }
 
     public int getId() {
@@ -94,7 +94,8 @@ public class Klient {
     public String toString() {
         return "Klient{" +
                 "id=" + id +
-                ", KlientHandle=" + KlientHandle +
+                ", priorytet =" + priorytet +
+                ", idKolejki=" + idKolejki +
                 '}';
     }
 }
