@@ -113,8 +113,8 @@ public class StatystykaFederate {
                     (new File("fom.xml")).toURI().toURL()
             };
 
-            rtiamb.createFederationExecution( "MSKfed", modules );
-            log( "Created Federation MSKfed" );
+            rtiamb.createFederationExecution( "federation", modules );
+            log( "Created Federation" );
         }
         catch( FederationExecutionAlreadyExists exists )
         {
@@ -127,7 +127,7 @@ public class StatystykaFederate {
             return;
         }
 
-        rtiamb.joinFederationExecution( federateName, "StatystykaFederate",	"MSKfed" );
+        rtiamb.joinFederationExecution( federateName, "StatystykaFederate",	"federation" );
         log( "Joined Federation as " + federateName );
 
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
@@ -161,7 +161,7 @@ public class StatystykaFederate {
 
         try
         {
-            rtiamb.destroyFederationExecution( "MSKfed" );
+            rtiamb.destroyFederationExecution( "federation" );
             log( "Destroyed Federation" );
         }
         catch( FederationExecutionDoesNotExist dne )
@@ -176,7 +176,7 @@ public class StatystykaFederate {
 
     private void publishAndSubscribe() throws RTIexception
     {
-        this.koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
+        koniecSymulacjiHandle = rtiamb.getInteractionClassHandle( "HLAinteractionRoot.koniecSymulacji" );
         rtiamb.subscribeInteractionClass(koniecSymulacjiHandle);
 
 

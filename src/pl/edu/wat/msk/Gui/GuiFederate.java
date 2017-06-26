@@ -112,8 +112,8 @@ public class GuiFederate {
                     (new File("fom.xml")).toURI().toURL()
             };
 
-            rtiamb.createFederationExecution( "MSKfed", modules );
-            log( "Created Federation MSKfed" );
+            rtiamb.createFederationExecution( "federation", modules );
+            log( "Created Federation" );
         }
         catch( FederationExecutionAlreadyExists exists )
         {
@@ -126,7 +126,7 @@ public class GuiFederate {
             return;
         }
 
-        rtiamb.joinFederationExecution( federateName, "GuiFederate",	"MSKfed" );
+        rtiamb.joinFederationExecution( federateName, "GuiFederate",	"federation" );
         log( "Joined Federation as " + federateName );
 
         this.timeFactory = (HLAfloat64TimeFactory)rtiamb.getTimeFactory();
