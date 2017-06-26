@@ -3,6 +3,9 @@ package pl.edu.wat.msk.Okienko;
 
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.EncoderFactory;
+import hla.rti1516e.encoding.HLAfixedArray;
+import hla.rti1516e.encoding.HLAinteger16BE;
+import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederatesCurrentlyJoined;
 import hla.rti1516e.exceptions.FederationExecutionAlreadyExists;
 import hla.rti1516e.exceptions.FederationExecutionDoesNotExist;
@@ -39,6 +42,7 @@ public class OkienkoFederate {
 
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle klientObsluzonyHandle;
+    protected ParameterHandle idObsluzonegoKlientaHandle;
 
     //udostepniane z fom
     protected ObjectClassHandle KlientHandle;
@@ -161,6 +165,7 @@ public class OkienkoFederate {
         rtiamb.publishInteractionClass(koniecSymulacjiHandle);
 
         klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
+        idObsluzonegoKlientaHandle = rtiamb.getParameterHandle(this.klientObsluzonyHandle, "idObsluzonegoKlienta");
         rtiamb.publishInteractionClass(klientObsluzonyHandle);
     }
 
@@ -194,15 +199,22 @@ public class OkienkoFederate {
         timer = ITERATIONS;
     }
 
-    private void sendInteraction(String type) throws RTIexception {
+    private void sendInteraction(String type, int klientId) throws RTIexception {
         HLAfloat64Time time = timeFactory.makeTime(fedamb.federateTime + fedamb.federateLookahead);
         if (type.equals("klientObsluzony")) {
-            ParameterHandleValueMap parameters1 = rtiamb.getParameterHandleValueMapFactory().create(0);
-            rtiamb.sendInteraction(klientObsluzonyHandle, parameters1, generateTag(), time);
+            ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(1);
+
+            HLAinteger32BE[] idKlienta = new HLAinteger32BE[1];
+            idKlienta[0] = encoderFactory.createHLAinteger32BE(klientId);
+
+            HLAfixedArray<HLAinteger32BE> idObsluzonegoKlienta = encoderFactory.createHLAfixedArray( idKlienta );
+            parameters.put(idObsluzonegoKlientaHandle, idObsluzonegoKlienta.toByteArray());
+
+            rtiamb.sendInteraction(klientObsluzonyHandle, parameters, generateTag(), time);
         }
     }
 
-    public void obslugaKlientow(int czasSymulacji) throws RTIexception, Exception {
+    public void obslugaKlientow(int czasSymulacji) throws Exception {
         simTime = czasSymulacji;
 
         log(listaOkienek.toString());
@@ -235,7 +247,7 @@ public class OkienkoFederate {
             else{
                 if(okienko.getObslugiwany() != null) { //ktos jest w ogole obslugiwany -> ustawione zakonczenieObslugiCzas
                     if (zakonczenieObslugiCzas == simTime) {
-                        sendInteraction("klientObsluzony");
+                        sendInteraction("klientObsluzony", okienko.getObslugiwany().getId());
                         log("KlientId " + okienko.getObslugiwany().getId() + " został obsluzony");
                         listaKlientow.remove(okienko.getObslugiwany());
                         okienko.setObslugiwany(null);

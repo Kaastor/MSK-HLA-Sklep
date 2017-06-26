@@ -3,6 +3,7 @@ package pl.edu.wat.msk.Okienko;
 import hla.rti1516e.*;
 import hla.rti1516e.encoding.DecoderException;
 import hla.rti1516e.encoding.HLAinteger16BE;
+import hla.rti1516e.encoding.HLAinteger32BE;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 
@@ -32,9 +33,24 @@ public class OkienkoFederateAmbassador extends NullFederateAmbassador
         System.out.println( "OkienkoFederateAmbassador: " + message );
     }
 
-    private short decodeValue(byte[] bytes )
+    protected short decodeValue(byte[] bytes )
     {
         HLAinteger16BE value = okienkoFederate.encoderFactory.createHLAinteger16BE();
+        try
+        {
+            value.decode( bytes );
+            return value.getValue();
+        }
+        catch( DecoderException de )
+        {
+            de.printStackTrace();
+            return 0;
+        }
+    }
+
+    protected int decodeValueInt(byte[] bytes )
+    {
+        HLAinteger32BE value = okienkoFederate.encoderFactory.createHLAinteger32BE();
         try
         {
             value.decode( bytes );

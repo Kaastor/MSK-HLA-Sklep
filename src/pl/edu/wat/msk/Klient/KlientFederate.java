@@ -36,6 +36,7 @@ public class KlientFederate {
     protected InteractionClassHandle koniecSymulacjiHandle;
     protected InteractionClassHandle generujKlientaHandle;
     protected InteractionClassHandle klientObsluzonyHandle;
+    protected ParameterHandle idObsluzonegoKlientaHandle;
     //udostepniane z fom
     protected ObjectClassHandle KlientHandle;
     protected AttributeHandle idHandle;
@@ -149,10 +150,14 @@ public class KlientFederate {
         attributes.add(this.wKolejceHandle);
         rtiamb.publishObjectClassAttributes(KlientHandle, attributes);
 
-        generujKlientaHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.generujKlienta");
-        rtiamb.subscribeInteractionClass(generujKlientaHandle);
         klientObsluzonyHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.klientObsluzony");
         rtiamb.subscribeInteractionClass(klientObsluzonyHandle);
+        idObsluzonegoKlientaHandle = rtiamb.getParameterHandle(this.klientObsluzonyHandle, "idObsluzonegoKlienta");
+
+
+        generujKlientaHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.generujKlienta");
+        rtiamb.subscribeInteractionClass(generujKlientaHandle);
+
         koniecSymulacjiHandle = rtiamb.getInteractionClassHandle("HLAinteractionRoot.koniecSymulacji");
         rtiamb.publishInteractionClass(koniecSymulacjiHandle);
     }
@@ -227,8 +232,14 @@ public class KlientFederate {
         log("KlientId: " + klient.getId() + " nowy klient wygenerowany.");
     }
 
-    public void rtiUtylizacjaKlienta(){
-        System.out.println(simTime + " Utylizacja klienta");
+    public void utylizacjaKlienta(int idKlienta){
+        for(Klient klient : listaKlientow) {
+            if (klient.getId() == idKlienta) {
+                listaKlientow.remove(klient);
+                break;
+            }
+        }
+        log("Utylizacja klienta: " + idKlienta);
     }
 
     private ObjectInstanceHandle registerObject() throws RTIexception {

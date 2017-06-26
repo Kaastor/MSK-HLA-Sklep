@@ -2,8 +2,7 @@ package pl.edu.wat.msk.Klient;
 
 
 import hla.rti1516e.*;
-import hla.rti1516e.encoding.DecoderException;
-import hla.rti1516e.encoding.HLAinteger16BE;
+import hla.rti1516e.encoding.*;
 import hla.rti1516e.exceptions.FederateInternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 
@@ -36,6 +35,21 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
     private short decodeValue(byte[] bytes )
     {
         HLAinteger16BE value = klientFederate.encoderFactory.createHLAinteger16BE();
+        try
+        {
+            value.decode( bytes );
+            return value.getValue();
+        }
+        catch( DecoderException de )
+        {
+            de.printStackTrace();
+            return 0;
+        }
+    }
+
+    protected int decodeValueInt(byte[] bytes )
+    {
+        HLAinteger32BE value = klientFederate.encoderFactory.createHLAinteger32BE();
         try
         {
             value.decode( bytes );
@@ -192,7 +206,24 @@ public class KlientFederateAmbassador extends NullFederateAmbassador
         else if( interactionClass.equals(klientFederate.klientObsluzonyHandle) )
         {
             builder.append( " (klientObsluzony)" );
-            this.klientFederate.rtiUtylizacjaKlienta();
+            byte[] bajty = theParameters.get(klientFederate.idObsluzonegoKlientaHandle);
+            int liczbaBajtow = bajty.length/4 -1;
+            HLAinteger32BE[] idObsluzonegoKlienta = new HLAinteger32BE[liczbaBajtow];
+
+            for(int i = 0;i < liczbaBajtow ; i++)
+                idObsluzonegoKlienta[i] = klientFederate.encoderFactory.createHLAinteger32BE();
+            HLAfixedArray<HLAinteger32BE> values = klientFederate.encoderFactory.createHLAfixedArray(idObsluzonegoKlienta);
+            int klientId = -1;
+            try {
+                values.decode( bajty );
+                for( int i = 0 ; i < liczbaBajtow ; ++i )
+                {
+                    builder.append(values.get( i ).getValue()+", ");
+                    klientId = values.get( i ).getValue();
+                }
+            } catch (DecoderException e) { e.printStackTrace();  }
+            log( builder.toString() );
+            this.klientFederate.utylizacjaKlienta(klientId);
         }
 
         builder.append( ", tag=" + new String(tag) + ", time=" + ((HLAfloat64Time)time).getValue() );
