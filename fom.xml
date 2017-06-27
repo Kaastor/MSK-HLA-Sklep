@@ -144,7 +144,6 @@
                 dimensions="NA"
                 transportation="HLAreliable"
                 order="Receive">
-
             <interactionClass
                     name="koniecSymulacji"
                     sharing="PublishSubscribe"
