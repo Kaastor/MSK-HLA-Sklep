@@ -191,7 +191,7 @@ public class GuiFederate {
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
         if(type.equals("koniecSymulacji"))
         {
-            log("Wysylam symulacja");
+            log("Wysylam koniecSymulacji");
             ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(0);
             rtiamb.sendInteraction( koniecSymulacjiHandle, parameters, generateTag(), time );
         }

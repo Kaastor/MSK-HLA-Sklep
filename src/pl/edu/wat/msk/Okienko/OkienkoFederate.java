@@ -24,7 +24,6 @@ import java.util.LinkedList;
 
 public class OkienkoFederate {
 
-    public static int liczbaOkienekKlient =2;
     public static int liczbaOkienek =0;
     public int czasObslugi = 1;
     public int zakonczenieObslugiCzas = 0;
@@ -38,7 +37,6 @@ public class OkienkoFederate {
     public static final String READY_TO_RUN = "ReadyToRun";
     public static int timer;
     public static int maxOkienkoId = 0;
-    private boolean utworzOkienka = false;
 
     private int simTime;
     private RTIambassador rtiamb;
@@ -227,7 +225,6 @@ public class OkienkoFederate {
         gui.setCzasObslugi(czasObslugi);
         this.liczbaOkienek = liczbaOkienek;
         this.czasObslugi = czasObslugi;
-        this.utworzOkienka = true;
         for (int i = 0  ; i < liczbaOkienek ; i++)
             rtiNoweOkienko();
         log("Update: liczbaOkienek" + liczbaOkienek + ",  czasObslugi: " + czasObslugi);
@@ -250,7 +247,6 @@ public class OkienkoFederate {
         HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + + fedamb.federateLookahead);
 
         ParameterHandleValueMap parameters = rtiamb.getParameterHandleValueMapFactory().create(2);
-        //HLAinteger32BE klienci = encoderFactory.createHLAinteger32BE( this.liczbaKlientow );
         HLAinteger32BE klienci = encoderFactory.createHLAinteger32BE( this.liczbaKlientow );
         HLAinteger32BE obsluzeni = encoderFactory.createHLAinteger32BE( this.liczbaObsluzonych);
 
@@ -306,7 +302,6 @@ public class OkienkoFederate {
                     log("KlientId " + okienko.getObslugiwany().getId() + " (uprzywilejowany) został pobrany do obslugi przez " + okienko.getId());
                     okienko.getObslugiwany().setObslugiwany(1);//do etstow
                     okienko.setWolne(0);
-                    liczbaObsluzonych++;
                     zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
                 }
                 else{
@@ -315,7 +310,6 @@ public class OkienkoFederate {
                         log("KlientId " + okienko.getObslugiwany().getId() + " (zwykly) został pobrany do obslugi przez " + okienko.getId());
                         okienko.getObslugiwany().setObslugiwany(1);
                         okienko.setWolne(0);
-                        liczbaObsluzonych++;
                         zakonczenieObslugiCzas = simTime + czasObslugi; //ustaw kiedy koniec obslugi
                     }
                 }
@@ -327,6 +321,7 @@ public class OkienkoFederate {
                         log("KlientId " + okienko.getObslugiwany().getId() + " został obsluzony");
                         listaKlientow.remove(okienko.getObslugiwany());
                         okienko.setObslugiwany(null);
+                        liczbaObsluzonych++;
                         okienko.setWolne(1);
                     }
                 }

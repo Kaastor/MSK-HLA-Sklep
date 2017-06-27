@@ -16,46 +16,6 @@
                     transportation="HLAreliable"
                     order="TimeStamp" />
             <objectClass
-                    name="Kasa"
-                    sharing="PublishSubscribe"
-                    semantics="NA">
-                <attribute
-                        name="nrkasy"
-                        dataType="HLAinteger32BE"
-                        updateType="Conditional"
-                        updateCondition="NA"
-                        ownership="NoTransfer"
-                        sharing="PublishSubscribe"
-                        dimensions="NA"
-                        transportation="HLAreliable"
-                        order="TimeStamp"
-                        semantics="NA" />
-                <attribute
-                        name="dlkolejki"
-                        dataType="HLAinteger32BE"
-                        updateType="Conditional"
-                        updateCondition="NA"
-                        ownership="NoTransfer"
-                        sharing="PublishSubscribe"
-                        dimensions="NA"
-                        transportation="HLAreliable"
-                        order="TimeStamp"
-                        semantics="NA">
-            </attribute>
-                <attribute
-                        name="wolna"
-                        dataType="HLAboolean"
-                        updateType="Conditional"
-                        updateCondition="NA"
-                        ownership="NoTransfer"
-                        sharing="PublishSubscribe"
-                        dimensions="NA"
-                        transportation="HLAreliable"
-                        order="TimeStamp"
-                        semantics="NA">
-                </attribute>
-            </objectClass>
-            <objectClass
                     name="Klient"
                     sharing="PublishSubscribe"
                     semantics="NA">
@@ -184,33 +144,7 @@
                 dimensions="NA"
                 transportation="HLAreliable"
                 order="Receive">
-            <interactionClass
-                    name="wyslijdanestatystyczne"
-                    sharing="PublishSubscribe"
-                    dimensions="NA"
-                    transportation="HLAreliable"
-                    order="Receive"
-                    semantics="NA">
-                <parameter
-                        name="nrkasystatystyka"
-                        dataType="HLAfixedArray"
-                        updateType="Conditional"
-                        updateCondition="NA"
-                        ownership="NoTransfer"
-                        sharing="PublishSubscribe"
-                        dimensions="NA"
-                        transportation="HLAreliable"
-                        order="TimeStamp"
-                        semantics="NA" />
-            </interactionClass>
-            <interactionClass name="daneSymulacji" sharing="PublishSubscribe"
-                              dimensions="NA" transportation="HLAreliable" order="Receive"
-                              semantics="NA">
-                <parameter name="czasObslugi" dataType="HLAfloat64BE" semantics="NA" />
-                <parameter name="liczbaNaplywajacychKlientow" dataType="HLAinteger32BE" semantics="NA" />
-                <parameter name="okresCzasuNaplywu" dataType="HLAfloat64BE" semantics="NA" />
-                <parameter name="liczbaOkienek" dataType="HLAinteger32BE" semantics="NA" />
-            </interactionClass>
+
             <interactionClass
                     name="koniecSymulacji"
                     sharing="PublishSubscribe"
@@ -233,14 +167,6 @@
             </interactionClass>
             <interactionClass
                     name="generujKlienta"
-                    sharing="PublishSubscribe"
-                    dimensions="NA"
-                    transportation="HLAreliable"
-                    order="Receive"
-                    semantics="NA">
-            </interactionClass>
-            <interactionClass
-                    name="startSymulacji"
                     sharing="PublishSubscribe"
                     dimensions="NA"
                     transportation="HLAreliable"

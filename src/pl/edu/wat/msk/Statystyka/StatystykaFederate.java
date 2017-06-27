@@ -38,12 +38,6 @@ public class StatystykaFederate {
 
         protected InteractionClassHandle koniecSymulacjiHandle;
 
-        protected InteractionClassHandle daneSymulacjiHandle;
-        protected ParameterHandle czasObslugiHandle;
-        protected ParameterHandle liczbaNaplywajacychKlientowHandle;
-        protected ParameterHandle okresCzasuNaplywuHandle;
-        protected ParameterHandle liczbaOkienekHandle;
-
         protected InteractionClassHandle wyslijWynikiHandle;
         protected ParameterHandle liczbaKlientowHandle;
         protected ParameterHandle liczbaObsluzonychHandle;
@@ -176,11 +170,6 @@ public class StatystykaFederate {
 
     }
 
-
-    public void sendInteraction(String type) throws RTIexception
-    {
-        HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime+fedamb.federateLookahead );
-    }
 
     public void advanceTime( double timeStep ) throws RTIexception
     {
